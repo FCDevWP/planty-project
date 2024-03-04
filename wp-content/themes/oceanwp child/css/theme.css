@@ -1,0 +1,562 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+
+/* Global Variables */
+
+* :root {
+    --background_primary: #ECE2DA;
+    --background_secondary: #3B8E46;
+    --background-white: #FFFFFF;
+
+    --primary-color: #3B8E46;
+    --secondary-color: #D2776A;
+    --white-text: #FFFFFF;
+    --black-text: #000000;
+    
+    --button-nav: #DC9F96;
+    --button-nav-hover: #C02E44;
+    --button-page: #E0B9B4; 
+    --button-page-hover: #C02E44;
+    --button-text: #FFFFFF;
+}
+
+* body {
+    font-family: 'Syne', sans-serif;
+}
+
+.entry-content p {
+    color:black;
+    margin-bottom: 20px;
+} 
+
+h1 {
+    font-size: 38px;
+    font-weight:800;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight:800;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight:700;
+    transform: none;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight:bold;
+    transform: none;
+}
+
+a {
+    color: black;
+    text-decoration:none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+/* Nav Menu Mobile */
+.ast-mobile-popup-drawer .ast-mobile-popup-inner {
+    background-color: white;
+    color:black;
+}
+
+.ast-builder-menu-mobile .main-navigation .main-header-menu .menu-item > .menu-link {
+    color: black;
+    background:white;
+}
+
+.ast-builder-menu-mobile .main-navigation .main-header-menu .menu-item > .menu-link:hover {
+    color: black;
+    background: white;
+}
+
+/* Ceci supprime les flèches de défilement sur les champs de formulaire */
+.panier input::-webkit-outer-spin-button,
+.panier input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Header */
+
+header #commander {
+	background-color: var(--button-nav);
+}
+
+#menu-item-47 a:hover {
+    font-weight:bolder;
+    font-size: 14px;
+    line-height:14px;
+}
+
+#masthead .ast-container, .site-header-focus-item + .ast-breadcrumbs-wrapper {
+	padding-right: 0;
+}
+
+.page-commander-lien {
+	background-color: var(--button-page);
+	height:100%;
+	width: 236px;
+	text-align: center;
+    margin-right: 0;
+}
+
+/* Page Nous Rencontrer */
+
+.conteneur-form-contact label {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--black-text);
+    line-height: 2;
+    margin: 10px 0;
+}
+
+.conteneur-form-contact input {
+    height: 75px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1.5em;
+    padding: 0 10px;
+    border-radius: 10px;
+    border-color: #ECE2DA;
+    margin-bottom: 10px;
+}
+
+.conteneur-form-contact textarea {
+    height: 200px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1.5em;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: #ECE2DA;
+}
+
+.conteneur-form-bouton {
+    display:flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.conteneur-form-bouton input {
+    background-color: #E0B9B4;
+    font-size: 20px;
+    color:white;
+    font-weight: 400;
+    width: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+.conteneur-form-bouton input:hover {
+    background-color: #C02E44;
+}
+
+/* Page Commander */
+
+.section-panier {
+    display:flex;
+    flex-direction:row;
+    column-gap: 30px;
+    width: 100%;
+    height: 140px;
+    margin: 10px 0;
+    padding: 10px 0;
+    justify-content:space-around;
+    border-bottom: 1px solid white;
+}
+
+.section-panier .panier {
+    width: 60px;
+    margin: auto;
+    padding: 20px 0;
+    height: 100%;
+}
+
+.panier input {
+    height: 80px;
+    text-align: center;
+}
+
+.panier input[value] {
+    font-size: 25px;
+    line-height: 2.5em;
+}
+
+.section-command .form-info input,
+.section-command .form-livraison input {
+    height: 75px;
+    width: 98%;
+    font-size: 20px;
+    line-height: 1.5em;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.section-command {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    height: auto;
+}
+
+.section-command p {
+    margin: 0;
+    padding: 0;
+}
+
+.form-info, .form-livraison {
+    display:flex;
+    flex-direction:column;
+    align-self: center; 
+    width: 430px;
+}
+
+.form-divider {
+    border-right: 1px solid white;
+    height: 98%;
+}
+
+.form-info {
+    padding-right: 50px;
+    width: 49%;
+    border-right: 1px solid white;
+}
+
+.form-livraison {
+    padding-left: 50px;
+    width: 50%;
+    margin-right: 0;
+}
+
+.form-info h3, .form-livraison h3 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    line-height: 1.5em;
+    color: white;
+    margin:0;
+    padding-bottom: 5px;  
+}
+
+.form-livraison label,
+.form-info label {
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    line-height: 2;
+    margin: 10px 0;
+}
+
+.conteneur-bouton-command {
+    display:flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 45px;
+} 
+
+.conteneur-bouton-command input {
+    background-color: #E0B9B4;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    width: 200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.conteneur-bouton-command input:hover {
+    background-color: #C02E44;
+}
+
+/* Footer */ 
+
+footer {
+    border-top: solid white 1px;
+}
+
+.site-primary-footer-wrap {
+	border-top: solid white;
+}
+
+/*                          Responsive                                  */
+
+@media screen and (min-width:320px) and (max-width:767px){
+/* Général */
+
+    h1 {
+        font-size: 28px;
+        margin: 10px 0; 
+    }
+
+    h2 {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    h4 {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    /* Home */ 
+
+    .gallery-goûts {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    /* Page Nous Rencontrer */
+
+    .conteneur-form-bouton {
+        margin-left: 75px;
+    }
+
+    .elementor-14 .elementor-element.elementor-element-f39e533 {
+        padding: 10px 0;
+    }
+
+    /* Page Commander */
+
+    .section-panier {
+        column-gap: 10px;
+        height: auto;
+        margin: 10px 0;
+        padding: 0;
+    }
+
+    .section-panier .panier {
+        width: 70px;
+        margin: 0;
+        padding: 10px;
+        height: 100%;
+    }
+
+    .panier input {
+        height: 70px;
+        text-align: center;
+    }
+
+    .panier input[value] {
+        font-size: 18px;
+        line-height: 1.5em;
+    }
+
+    .section-command .form-info input,
+    .section-command .form-livraison input {
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .section-command {
+        display:flex;
+        flex-direction:column;
+        margin-top: 10px;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        height: auto;
+    }
+
+    .form-info, .form-livraison {
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+    .form-info {
+        margin-bottom: 30px;
+        padding: 30px 10px;
+        border-right:none;
+        border-bottom: solid white 1px;
+    }
+
+    .form-info h3, .form-livraison h3 {
+        font-size: 20px;
+        margin: 20px 0;
+        padding-bottom: 5px;  
+    }
+
+    .form-info label,
+    .form-livraison label {
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .conteneur-bouton-command {
+        margin-left: 60px;
+    }
+
+    .conteneur-bouton-command input {
+        font-size: 16px;
+        width: 150px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px){
+    h1 {
+        font-size: 32px;
+        margin: 10px 0;
+    }
+
+    h2 {
+        font-size: 26px;
+        margin: 10px 0;
+    }
+
+    h3 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+    h4 {
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+    
+    /* Page Commander */
+
+    .panier input {
+        height: 70px;
+        text-align: center;
+    }
+    
+    .panier input[value] {
+        font-size: 22px;
+        line-height: 2em;
+    }
+
+    .form-info h3,
+    .form-livraison h3 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width:1025px) and (max-width:1440px){
+    h1 {
+        font-size: 36px;
+        margin: 10px 0;
+    }
+
+    h2 {
+        font-size: 28px;
+        margin: 10px 0;
+    }
+
+    h3 {
+        font-size: 26px;
+        margin: 10px 0;
+    }
+
+    h4 {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    /* Page Commander */
+
+    .panier input {
+        height: 80px;
+        text-align: center;
+    }
+
+    .panier input[value] {
+        font-size: 25px;
+        line-height: 2.5em;
+    }
+
+    .form-info h3,
+    .form-livraison h3 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width:1441px){
+    h1 {
+        font-size: 38px;
+        margin: 10px 0;
+    }
+
+    h2 {
+        font-size: 30px;
+        margin: 10px 0;
+    }
+
+    h3 {
+        font-size: 30px;
+        margin: 10px 0;
+    }
+
+    h4 {
+        font-size: 28px;
+        margin: 10px 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    /* Page Commander */
+
+    .panier input {
+        min-height: 80px;
+        text-align: center;
+    }
+
+    .panier input[value] {
+        font-size: 25px;
+        line-height: 2.5em;
+    }
+
+    .form-info h3,
+    .form-livraison h3 {
+        font-size: 30px;
+    }
+    
+    .form-info label, .form-livraison label {
+        font-size: 25px;
+    }
+
+    .form-info input, .form-livraison input {
+        min-height: 80px;
+    }
+
+    .form-info input[value], .form-livraison input[value] {
+        font-size: 25px;
+    }
+}
