@@ -6,7 +6,7 @@ function theme_enqueue_styles() {
 }
 
 function ajouter_element_menu( $items, $args ) {
-    if ( current_user_can( 'manage_options' ) ) {
+    if ( is_user_logged_in ()  ) {
         $items .= '<li class="menu_item"><a href="' . admin_url() . '">Admin</a></li>';
     }
     return $items;
