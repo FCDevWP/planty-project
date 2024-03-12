@@ -9,6 +9,17 @@
 
 	</main><!-- #main -->
 
+	
+<div id="footer-inner" class="clr">
+	<div id="footer-bottom" class="clr no-footer-nav">
+		<div id="footer-bottom-inner" class="container clr">
+			<div id="copyright" class="clr" role="contentinfo">
+				<a href="http://localhost:8888/planty">Mentions légales</a>			
+			</div><!-- #copyright -->
+		</div><!-- #footer-bottom-inner -->
+	</div><!-- #footer-bottom -->
+</div><!-- #footer-inner -->
+
 	<?php do_action( 'ocean_after_main' ); ?>
 
 	<?php do_action( 'ocean_before_footer' ); ?>
@@ -79,5 +90,6 @@ if ( 'fullscreen' === oceanwp_mobile_menu_style() ) {
 ?>
 
 <?php wp_footer(); ?>
+
 </body>
 </html>
