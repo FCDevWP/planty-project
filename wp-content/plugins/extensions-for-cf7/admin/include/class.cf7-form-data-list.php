@@ -5,8 +5,7 @@ if( ! defined( 'ABSPATH' ) ) exit(); // Exit if accessed directly
 /**
  * HT CF7 Email List
 */
-class Extensions_Cf7_Page implements Extensions_Cf7_Form_Datalist_Render
-{
+class Extensions_Cf7_Page implements Extensions_Cf7_Form_Datalist_Render {
     function cf7_layout_render(){
         $eamil_list_table = new Extensions_Cf7_list();
         $eamil_list_table->set_data();  
@@ -14,11 +13,11 @@ class Extensions_Cf7_Page implements Extensions_Cf7_Form_Datalist_Render
         ob_start();
         ?>
         <div class="wrap">
-            <h3><?php _e("Email List","cf7-extensions") ?></h3>
+            <h3><?php esc_html_e( "Email List","cf7-extensions"); ?></h3>
             <form method="post" action="" enctype="multipart/form-data">
                 <?php
-                $eamil_list_table->search_box('search','search_id');  
-                $eamil_list_table->display();
+                    $eamil_list_table->search_box('search','search_id');  
+                    $eamil_list_table->display();
                 ?>
             </form>
         </div>
@@ -28,7 +27,7 @@ class Extensions_Cf7_Page implements Extensions_Cf7_Form_Datalist_Render
 }
 
 
-if(!class_exists('WP_List_Table')){
+if( !class_exists('WP_List_Table') ){
 	require_once ABSPATH."wp-admin/includes/class-wp-list-table.php";
 }
 
@@ -93,44 +92,77 @@ class Extensions_Cf7_list extends WP_List_Table
         }
         
         if( $search && $form_date && $to_date ){
-            $results = $wpdb->get_results( "SELECT * FROM $table_name 
-                        WHERE form_date BETWEEN '$form_date' 
-                        AND '$to_date' 
-                        AND form_value LIKE '%$search%'
-                        AND form_id = '$cf7_post_id'
-                        ORDER BY $cf7_orderby $cf7_order
-                        LIMIT $start,100", OBJECT 
-                    );
+            $results = $wpdb->get_results( 
+                $wpdb->prepare("SELECT * FROM $table_name 
+                    WHERE form_date BETWEEN '%s' 
+                    AND '%s' 
+                    AND form_value LIKE %s
+                    AND form_id = '%d'
+                    ORDER BY '%s' '%s'
+                    LIMIT $start,100", 
+                    $form_date, 
+                    $to_date, 
+                    '%'.$wpdb->esc_like($search).'%', 
+                    $cf7_post_id, 
+                    $cf7_orderby, 
+                    $cf7_order 
+                ),
+                OBJECT 
+            );
 
         }else if( $search ) {
-
-           $results = $wpdb->get_results( "SELECT * FROM $table_name 
-                        WHERE  form_value LIKE '%$search%'
-                        AND form_id = '$cf7_post_id'
-                        ORDER BY $cf7_orderby $cf7_order
-                        LIMIT $start,100", OBJECT 
-                    );
+           $results = $wpdb->get_results( 
+                $wpdb->prepare("SELECT * FROM $table_name 
+                    WHERE  form_value LIKE %s
+                    AND form_id = '%d'
+                    ORDER BY '%s' '%s'
+                    LIMIT $start,100",
+                    '%'.$wpdb->esc_like($search).'%',
+                    $cf7_post_id,
+                    $cf7_orderby,
+                    $cf7_order
+                ), 
+                OBJECT 
+            );
         }else if( $form_date && $to_date ){
-            $results = $wpdb->get_results( "SELECT * FROM $table_name 
-                        WHERE  form_date BETWEEN '$form_date' 
-                        AND '$to_date'
-                        AND form_id = '$cf7_post_id'
-                        ORDER BY $cf7_orderby $cf7_order
-                        LIMIT $start,100", OBJECT 
-                    );
+            $results = $wpdb->get_results( 
+                $wpdb->prepare( "SELECT * FROM $table_name 
+                    WHERE  form_date BETWEEN '%s' 
+                    AND '%s'
+                    AND form_id = '%d'
+                    ORDER BY '%s' '%s'
+                    LIMIT $start,100",
+                    $form_date,
+                    $to_date,
+                    $cf7_post_id,
+                    $cf7_orderby,
+                    $cf7_order
+                ), 
+                OBJECT 
+            );
         }else if($cf7_post_id){
-
-            $results = $wpdb->get_results( "SELECT * FROM $table_name 
-                        WHERE form_id = $cf7_post_id
-                        ORDER BY $cf7_orderby $cf7_order
-                        LIMIT $start,100", OBJECT 
-                    );
+            $results = $wpdb->get_results( 
+                $wpdb->prepare( "SELECT * FROM $table_name 
+                    WHERE form_id = '%d'
+                    ORDER BY '%s' '%s'
+                    LIMIT $start,100",
+                    $cf7_post_id,
+                    $cf7_orderby,
+                    $cf7_order
+                ), 
+                OBJECT 
+            );
         }else{
-
-            $results = $wpdb->get_results( "SELECT * FROM $table_name
-                        ORDER BY $cf7_orderby $cf7_order
-                        LIMIT $start,100", OBJECT 
-                    );
+            $results = $wpdb->get_results( 
+                $wpdb->prepare(
+                    "SELECT * FROM $table_name
+                    ORDER BY '%s' '%s'
+                    LIMIT $start,100",
+                    $cf7_orderby,
+                    $cf7_order
+                ), 
+                OBJECT 
+            );
         }
 
 
@@ -145,14 +177,14 @@ class Extensions_Cf7_list extends WP_List_Table
                 $key_value       = str_replace( array('_', '-'), ' ', $key_value);
                 if(is_array($value)){
                     $array_data = implode(', ',$value);
-                    $cf7_form_data[]     = ucwords( $key_value ).': '.esc_html($array_data);
+                    $cf7_form_data[]     = ucwords( esc_html($key_value) ).': '.esc_html($array_data);
                 }else{
-                    $cf7_form_data[]     = ucwords( $key_value ).': '.esc_html($value);
+                    $cf7_form_data[]     = ucwords( esc_html($key_value) ).': '.esc_html($value);
                 }
                 if ( sizeof($cf7_form_data) > 2) break;
             }
             $cf7_form_values['form_data'] = implode(".<br>",$cf7_form_data);
-            $cf7_form_values['form_title'] = get_the_title($cf7_post_id);
+            $cf7_form_values['form_title'] = esc_html(get_the_title($cf7_post_id));
             $cf7_form_values['date'] = date_format(date_create($result->form_date),"F j, Y");
             $data[] = $cf7_form_values;
 
@@ -202,7 +234,7 @@ class Extensions_Cf7_list extends WP_List_Table
 
 		echo "<ul class='subsubsub'>\n";
 		foreach ( $views as $class => $view ) {
-			$views[ $class ] = "\t<li class='$class'>$view";
+			$views[ $class ] = "\t<li class='".esc_attr($class)."'>$view";
 		}
 		echo implode( " |</li>\n", $views ) . "</li>\n";
 		echo '</ul>';
@@ -259,23 +291,23 @@ class Extensions_Cf7_list extends WP_List_Table
      * @return checkbox
     */
     public function column_cb($item){
-        return "<input type='checkbox' name='cf7_emails_id[]' value='{$item['id']}' />";
+        return "<input type='checkbox' name='cf7_emails_id[]' value='".esc_attr($item['id'])."' />";
     }
 
     public function column_form_data($item){
         $nonce = wp_create_nonce("cf7_email_delete");
         $actions = [
-            'view' => sprintf("<b><a href=admin.php?page=contat-form-list&cf7_id=%s&cf7em_id=%s>%s</a></b>",$this->cf7_post_id,$item['id'],'View'),
-            'delete' => sprintf('<b><a href=admin.php?page=contat-form-list&cf7_id=%s&n=%s&cf7em_id=%s&action=%s onclick=\'return confirm("Are you sure to delete this file");\'>%s</a></b>',$this->cf7_post_id,$nonce,$item['id'],'delete#/entries',__('Delete','cf7-extensions' )),
+            'view' => sprintf("<b><a href=admin.php?page=contat-form-list&cf7_id=%s&cf7em_id=%s>%s</a></b>",esc_attr( $this->cf7_post_id ), esc_attr($item['id']), esc_html__('View','cf7-extensions')),
+            'delete' => sprintf('<b><a href=admin.php?page=contat-form-list&cf7_id=%s&n=%s&cf7em_id=%s&action=%s onclick=\'return confirm("%s");\'>%s</a></b>',esc_attr($this->cf7_post_id),esc_attr($nonce),esc_attr( $item['id'] ),'delete#/entries',esc_html__('Are you sure to delete this file','cf7-extensions'), esc_html__('Delete','cf7-extensions' )),
         ];
-        return sprintf("%s %s",$item['form_data'],$this->row_actions($actions));
+        return sprintf("%s %s",$item['form_data'], $this->row_actions($actions) );
     }
 
     public function column_date($item){
         $nonce = wp_create_nonce("cf7_email_delete");
         $actions = [
-            'view' => sprintf('<b><a href=admin.php?page=contat-form-list&cf7_id=%s&cf7em_id=%s>%s</a></b>',$this->cf7_post_id,$item['id'],'View'),
-            'delete' => sprintf('<b><a href=admin.php?page=contat-form-list&cf7_id=%s&n=%s&cf7em_id=%s&action=%s onclick=\'return confirm("Are you sure to delete this file");\'>%s</a></b>',$this->cf7_post_id,$nonce,$item['id'],'delete',__('Delete','cf7-extensions' )),
+            'view' => sprintf('<b><a href=admin.php?page=contat-form-list&cf7_id=%s&cf7em_id=%s>%s</a></b>',esc_attr( $this->cf7_post_id ), esc_attr($item['id']), esc_html__('View','cf7-extensions')),
+            'delete' => sprintf('<b><a href=admin.php?page=contat-form-list&cf7_id=%s&n=%s&cf7em_id=%s&action=%s onclick=\'return confirm("%s");\'>%s</a></b>',esc_attr($this->cf7_post_id),esc_attr($nonce),esc_attr( $item['id'] ),'delete',esc_html__('Are you sure to delete this file','cf7-extensions'),esc_html__('Delete','cf7-extensions' )),
         ];
         return sprintf("%s %s",$item['date'],$this->row_actions($actions));
     }
@@ -291,9 +323,9 @@ class Extensions_Cf7_list extends WP_List_Table
 
 		return array(
             'cb' => '<input type="checkbox" />',
-            'form_data' => __( 'Form Data', 'cf7-extensions' ),
-            'form_title' => __( 'Form Title', 'cf7-extensions' ),
-            'date' => __( 'Date', 'cf7-extensions' ),
+            'form_data' => esc_html__( 'Form Data', 'cf7-extensions' ),
+            'form_title' => esc_html__( 'Form Title', 'cf7-extensions' ),
+            'date' => esc_html__( 'Date', 'cf7-extensions' ),
         );
 
 	}
@@ -304,10 +336,10 @@ class Extensions_Cf7_list extends WP_List_Table
         $to_data = isset($_REQUEST['to_data']) && !empty($_REQUEST['to_data']) ? sanitize_text_field($_REQUEST['to_data']) : '';
         ?>
         <div class="actions alignleft">
-            from
-            <input type="text" id="form-data" name="from_data" style="width: 130px;" placeholder="YYYY-MM-DD" value="<?php echo $form_date; ?>" autocomplete="off">
-            to
-            <input type="text" id="to-date" name="to_data" style="width: 130px;" placeholder="YYYY-MM-DD" value="<?php echo $to_data; ?>" autocomplete="off">
+            <?php esc_html_e('From','cf7-extensions'); ?>
+            <input type="text" id="form-data" name="from_data" style="width: 130px;" placeholder="YYYY-MM-DD" value="<?php echo esc_attr($form_date); ?>" autocomplete="off">
+            <?php esc_html_e('To','cf7-extensions'); ?>
+            <input type="text" id="to-date" name="to_data" style="width: 130px;" placeholder="YYYY-MM-DD" value="<?php echo esc_attr($to_data); ?>" autocomplete="off">
             <script type="text/javascript">
             (function($){
                 $(document).ready(function(){
@@ -321,7 +353,7 @@ class Extensions_Cf7_list extends WP_List_Table
             })(jQuery);
             </script>
             <?php 
-                submit_button(__('Filter','cf7-extensions'),'button','sumbit',false);
+                submit_button( esc_html__('Filter','cf7-extensions'),'button','sumbit',false );
             ?>
         </div>
 
@@ -334,14 +366,14 @@ class Extensions_Cf7_list extends WP_List_Table
             CSV File
            <input type="file" name="file" id="file" style="width: 150px;">
            <?php 
-                submit_button(__('Import CSV','cf7-extensions'),'button','csv-import',false);
+                submit_button(esc_html__('Import CSV','cf7-extensions'),'button','csv-import',false);
             ?>
         </div> 
         <?php
         endif;
         $csv_nonce = wp_create_nonce( 'csv_download_nonce' );
 
-        echo "<a href='".esc_html($_SERVER['REQUEST_URI'])."&download_csv=true&nonce=".$csv_nonce."'class='button'>";
+        echo "<a href='".esc_attr($_SERVER['REQUEST_URI'])."&download_csv=true&nonce=".esc_attr($csv_nonce)."'class='button'>";
         echo esc_html__( 'Export CSV', 'cf7-extensions' );
         echo '</a>';
     }
@@ -353,7 +385,7 @@ class Extensions_Cf7_list extends WP_List_Table
     public function get_bulk_actions() {
 
         return array(
-            'delete' => __( 'Delete', 'cf7-extensions' )
+            'delete' => esc_html__( 'Delete', 'cf7-extensions' )
         );
 
     }
@@ -372,27 +404,26 @@ class Extensions_Cf7_list extends WP_List_Table
    
         $perPage     = 100;
         $currentPage = $this->get_pagenum();
-        if ( ! empty($search) &&  ! empty($$from_date) && ! empty($to_date)) {
+        if ( ! empty($search) && !empty($from_date) && !empty($to_date)) {
 
-            $totalIemails  = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE form_date
-                                            BETWEEN '$from_date' 
-                                            AND '$to_date' 
-                                            AND form_value LIKE '%$search%' 
-                                            AND form_id = '$cf7_post_id' ");
+            $totalIemails = $wpdb->get_var( 
+                $wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE form_date BETWEEN '%s' AND '%s' AND form_value LIKE %s AND form_id = '%d' ", $from_date, $to_date, '%' . $wpdb->esc_like($search) . '%', $cf7_post_id, )
+            );
+
         }else if(! empty($search)){
-            $totalIemails  = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE form_value LIKE '%$search%' AND form_id = '$cf7_post_id' ");
+            $totalIemails  = $wpdb->get_var(
+                $wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE form_value LIKE %s AND form_id = '%d' ",'%' . $wpdb->esc_like($search) . '%', $cf7_post_id )
+            );
         }else if(! empty($from_date) && ! empty($to_date)){
-
-            $totalIemails  = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE form_date
-                                            BETWEEN '$from_date' 
-                                            AND '$to_date' 
-                                            AND form_id = '$cf7_post_id' ");
+            $totalIemails  = $wpdb->get_var(
+                $wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE form_date BETWEEN '%s' AND '%s' AND form_id = '%d' ", $from_date,$to_date, $cf7_post_id )
+            );
         }else{
 
-            if( $cf7_post_id ){
-                $totalIemails  = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE form_id = '$cf7_post_id'");
+            if( $cf7_post_id !== null ){
+                $totalIemails  = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE form_id = '%d'", $cf7_post_id));
             } else {
-                $totalIemails  = $wpdb->get_var("SELECT COUNT(*) FROM $table_name");
+                $totalIemails  = $wpdb->get_var( $wpdb->prepare("SELECT COUNT(*) FROM %s", $table_name) );
             }
             
         }
@@ -435,7 +466,7 @@ class Extensions_Cf7_list extends WP_List_Table
         if( 'delete' === $action ) {
             foreach ($form_ids as $form_id):
                 $form_id         = $form_id;
-                $delete_row      = $wpdb->get_results( "SELECT * FROM $table_name WHERE id = '$form_id' LIMIT 1", OBJECT );
+                $delete_row      = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $table_name WHERE id = '%d' LIMIT 1", $form_id ), OBJECT );
                 $del_row_value   = $delete_row[0]->form_value;
                 $del_row_values  = unserialize($del_row_value);
                 $cf7_upload_dir  = wp_upload_dir();
@@ -481,13 +512,13 @@ class Extensions_Cf7_list extends WP_List_Table
             return;
 
         echo '<select name="action' . $bulk_action_position . '">';
-        echo '<option value="-1">' . __( 'Bulk Actions', 'cf7-extensions' ) . "</option>";
+        echo '<option value="-1">' . esc_html__( 'Bulk Actions', 'cf7-extensions' ) . "</option>";
         foreach ( $this->_actions as $name => $title ) {
-            echo '<option value="' . $name . '">' . $title . "</option>";
+            echo '<option value="' . $name . '">' . esc_html__($title,'cf7-extensions') . "</option>";
         }
         echo "</select>";
 
-        submit_button( __( "Apply", "cf7-extensions" ), 'action', '', false, array( 'id' => "doaction$bulk_action_position" ) );
+        submit_button( esc_html__( "Apply", "cf7-extensions" ), 'action', '', false, array( 'id' => "doaction$bulk_action_position" ) );
     }
 
 }

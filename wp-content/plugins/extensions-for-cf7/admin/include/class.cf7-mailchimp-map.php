@@ -34,7 +34,7 @@ class Extensions_Cf7_Mailchimp_Map{
     public function mail_chimp_panel($panels){
         if ( current_user_can( 'wpcf7_edit_contact_form' ) ) {
             $panels['extcf7_pro-mailchimp-panel'] = array(
-                'title'    => __( 'HT MailChimp', 'cf7-extensions-pro' ),
+                'title'    => esc_html__( 'HT MailChimp', 'cf7-extensions' ),
                 'callback' => array( $this, 'add_mailchimp_pannel' ),
             );
         }
@@ -160,7 +160,7 @@ class Extensions_Cf7_Mailchimp_Map{
 
 	        $list_data 	= array(
 			    'id'  => 0,
-				'name' => 'empty list',
+				'name' => esc_html__('empty list','cf7-extensions'),
 		    );
 
 	       $tmp = array( 'lisdata' => array('lists' => $list_data ));
@@ -185,7 +185,7 @@ class Extensions_Cf7_Mailchimp_Map{
 
 	        $list_data 	= array(
 		    	'id'   => 0,
-				'name' => 'empty list',
+				'name' => esc_html__('empty list','cf7-extensions'),
 		    );
 
 	        $tmp = array( 'lisdata' => array('lists' => $list_data ));
@@ -230,10 +230,21 @@ class Extensions_Cf7_Mailchimp_Map{
     private function map_mailchimp_field($listdata){
 
         $res=array();
-        $address=array('addr1'=>'Street Line 1','addr2'=>'Street Line 2','city'=>'City','state'=>'State','zip'=>'Zip','country'=>'Country');
+        $address=array(
+            'addr1'=> esc_html__('Street Line 1','cf7-extensions'),
+            'addr2'=> esc_html__('Street Line 2','cf7-extensions'),
+            'city'=> esc_html__('City','cf7-extensions'),
+            'state'=> esc_html__('State','cf7-extensions'),
+            'zip'=> esc_html__('Zip','cf7-extensions'),
+            'country'=> esc_html__('Country','cf7-extensions'),
+        );
 
         if(!empty($listdata['merge_fields'])){
-            $res['PHONE']=array('name'=>'PHONE','label'=>'Phone Number','type'=>'phone');
+            $res['PHONE']=array(
+                'name'=>esc_html__('PHONE','cf7-extensions'),
+                'label'=>esc_html__('Phone Number','cf7-extensions'),
+                'type'=>'phone'
+            );
 
             foreach($listdata['merge_fields'] as $k=>$v){
                 $merge_id=intval($v['merge_id']);
@@ -275,7 +286,7 @@ class Extensions_Cf7_Mailchimp_Map{
     	if ( isset( $validapi ) && '1' == $validapi ):
     	?>
             <div class="extcf7_p_lr_tb">
-    		<label class="extcf7-mailchimp-label" for="extcf7-mailchimp-list"><?php echo esc_html( __( 'Your mailchimp lists: ','cf7-extensions-pro' ) ); ?></label>
+    		<label class="extcf7-mailchimp-label" for="extcf7-mailchimp-list"><?php echo esc_html( __( 'Your mailchimp lists: ','cf7-extensions' ) ); ?></label>
 		    <select id="extcf7-mailchimp-list" name="extcf7-mailchimp[list]" style="width:45%;">
 			    <?php
 			    foreach ( $listdata['lists'] as $list ) {
@@ -341,7 +352,7 @@ class Extensions_Cf7_Mailchimp_Map{
             <?php else: 
                 foreach ( $tag_list as $list ) {
             ?>
-                <input type="text" name="<?php echo $formname; ?>" value="<?php echo '['.$list['name'].']' ?>" style="width: 80%;">
+                <input type="text" name="<?php echo esc_attr($formname); ?>" value="<?php echo esc_attr('['.$list['name'].']') ?>" style="width: 80%;">
             <?php
               } 
               endif; 
@@ -356,7 +367,7 @@ class Extensions_Cf7_Mailchimp_Map{
                 <label class="extcf7-mailchimp-label" ><strong><?php echo esc_html__('Select Mailchimp Field','cf7-extensions-pro') ?></strong></label>
                 <select name="extcf7-mailchimp[mailchimp-tag][]" style="width:95%;">
                     <?php foreach ( $listfields as $field ): ?>
-                        <option value="<?php echo $field['name'] ?>"><?php echo $field['label']; ?></option>
+                        <option value="<?php echo esc_attr($field['name']) ?>"><?php echo esc_html($field['label']); ?></option>
                     <?php endforeach; ?>
                 </select>
             <?php

@@ -9,10 +9,10 @@
     $cf7_upload_dir 	= wp_upload_dir();
     $cfdb7_dirname  	= $cf7_upload_dir['baseurl'].'/extcf7_uploads';
 
-    $mail_form_data = $wpdb->get_results( "SELECT * FROM $table_name WHERE 	form_id = '$current_form_id' AND id = '$mail_form_id' LIMIT 1", OBJECT );
+    $mail_form_data = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $table_name WHERE id = '%d' LIMIT 1", $mail_form_id ), OBJECT );
 
     if( !$mail_form_data ){
-        echo "<span>No data found!</span>";
+        echo "<span>".esc_html__('No data found!','cf7-extensions')."</span>";
         return;
     }
 ?>
@@ -21,7 +21,7 @@
 <table class="extcf7-form-data-details">
     <tbody>
         <tr>
-            <th><?php echo esc_html('Date :') ?></th>
+            <th><?php echo esc_html__('Date :','cf7-extensions'); ?></th>
             <td><?php echo date_format(date_create($mail_form_data[0]->form_date),"F j, Y, g:i a"); ?></td>
         </tr>
         <?php $form_data  = unserialize( $mail_form_data[0]->form_value );
@@ -33,8 +33,7 @@
                 $key_value = str_replace('your-', '', $key);
                 $key_value = str_replace( array('-','_'), ' ', $key_value);
                 $key_value = ucwords( $key_value );
-                echo '<tr><th>Attachment :</th> <td><a href="'.$cfdb7_dirname.'/'.$data.'">'
-                .$data.'</a></td></tr>';
+                echo '<tr><th>'.esc_html__('Attachment :','cf7-extensions').'</th> <td><a href="'.esc_url($cfdb7_dirname.'/'.$data).'">'.esc_html($data).'</a></td></tr>';
             }else{
                 if(is_array($data)){
                     $key_value = str_replace('your-', '', $key);
@@ -42,13 +41,13 @@
                     $key_value = ucwords( $key_value );
                     $array_data =  implode(', ',$data);
                     $array_data =  esc_html( $array_data );
-                    echo '<tr><th>'.$key_value.' :</th><td>'.nl2br($array_data).'</td></tr>';
+                    echo '<tr><th>'.esc_html($key_value).' :</th><td>'.nl2br($array_data).'</td></tr>';
                 }else{
                     $key_value = str_replace('your-', '', $key);
                     $key_value = str_replace( array('-','_'), ' ', $key_value);
                     $key_value = ucwords( $key_value );
                     $data    = esc_html( $data );
-                    echo '<tr><th>'.$key_value.' :</th><td>'.nl2br($data).'</td></tr>';
+                    echo '<tr><th>'.esc_html($key_value).' :</th><td>'.nl2br($data).'</td></tr>';
                 }
             }
         endforeach;
@@ -82,7 +81,7 @@
                             }else{
                                 $ip_address = esc_html( $form_data['server_remote_addr'] );  
                             } 
-                            echo $ip_address ? $ip_address : 'Invalid Ip';
+                            echo $ip_address ? $ip_address : esc_html__('Invalid Ip','cf7-extensions');
                         ?></td>
                     </tr>
                 <?php endif; ?>

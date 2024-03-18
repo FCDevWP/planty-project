@@ -13,7 +13,7 @@ class Extensions_Cf7_Csv
 
 		if( $download_csv_status  && isset( $_REQUEST['nonce'] ) ){
 
-            $nonce  = filter_input( INPUT_GET, 'nonce', FILTER_SANITIZE_STRING );
+            $nonce  = sanitize_text_field($_REQUEST['nonce']);
 
             if ( ! wp_verify_nonce( $nonce, 'csv_download_nonce' ) ) wp_die('Not Valid.. Download Request..!!');
 
@@ -31,8 +31,11 @@ class Extensions_Cf7_Csv
         $table_name  = $wpdb->prefix.'extcf7_db';
 
         $cf7_id          = !empty($_REQUEST['cf7_id']) ? absint($_REQUEST['cf7_id']) : 0;
-        $csv_heading_row = $wpdb->get_results("SELECT * FROM $table_name
-            WHERE form_id = '$cf7_id' ORDER BY id DESC LIMIT 1",OBJECT);
+        $csv_heading_row = $wpdb->get_results( 
+            $wpdb->prepare( "SELECT * FROM $table_name
+            WHERE form_id = '%d' ORDER BY id DESC LIMIT 1", $cf7_id ),
+            OBJECT 
+        );
 
         // There is no record in the $cf7_id
         if( empty($csv_heading_row) ){
@@ -44,10 +47,10 @@ class Extensions_Cf7_Csv
         $csv_heading_key    = array_keys( $csv_heading_row );
 
 
-        $total_data_rows   = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE form_id = '$cf7_id' "); 
+        $total_data_rows   = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE form_id = '%d' ", $cf7_id )); 
         $per_query_n       = 1000;
         $total_query_n     = ( $total_data_rows / $per_query_n );
-        $csv_heading       = array('Date','Form Id');
+        $csv_heading       = array(esc_html__( 'Date', 'cf7-extensions' ), esc_html__( 'Form Id', 'cf7-extensions' ));
 
         foreach ($csv_heading_key as $hKeys ){
             $tmp_K       = str_replace( 'your-', '', $hKeys );
@@ -64,8 +67,13 @@ class Extensions_Cf7_Csv
         for( $k = 0; $k <= $total_query_n; $k++ ){
 
             $offset  = $k * $per_query_n;
-            $results = $wpdb->get_results("SELECT * FROM $table_name
-            WHERE form_id = '$cf7_id' ORDER BY id DESC  LIMIT $offset, $per_query_n",OBJECT);
+            $results = $wpdb->get_results(
+                $wpdb->prepare("SELECT * FROM $table_name
+                    WHERE form_id = '%d' ORDER BY id DESC  LIMIT $offset, $per_query_n",
+                    $cf7_id
+                ),
+                OBJECT
+            );
             
             $csv_data  = array();
 

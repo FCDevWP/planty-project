@@ -79,16 +79,30 @@ class Extensions_Cf7 {
   public function includes() {
     require_once ( CF7_EXTENTIONS_PL_PATH . 'includes/helper-functions.php' );
     require_once ( CF7_EXTENTIONS_PL_PATH . 'includes/class.form-data-store.php' );
-    require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-conditional.php' );
-    require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-condition-setup.php' );
-    require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-redirection.php' );
-    require_once ( CF7_EXTENTIONS_PL_PATH . 'includes/class.mailchimp-subscribe.php' );
+
+
+    if ( 'on' == htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','conditional_field_enable','on' ) ) {
+      require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-conditional.php' );
+      require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-condition-setup.php' );
+    }
+
+    if ( 'on' == htcf7ext_get_module_option( 'htcf7ext_redirection_extension_module_settings','redirection_extension','redirection_enable','on' ) ) {
+      require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-redirection.php' );
+    }
+
+    if ( 'on' == htcf7ext_get_option('htcf7ext_opt_extensions', 'mailchimp_extension', 'on') ) {
+      require_once ( CF7_EXTENTIONS_PL_PATH . 'includes/class.mailchimp-subscribe.php' );
+    }
+  
     if(is_admin()){
       require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.download-csv.php' );
       require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-post-list.php' );
       require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-form-data-list.php' );
       require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-form-data-detail.php' );
-      require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-mailchimp-map.php' );
+
+      if ( 'on' == htcf7ext_get_option('htcf7ext_opt_extensions', 'mailchimp_extension', 'on') ) {
+        require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-mailchimp-map.php' );
+      }
       require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/Recommended_Plugins.php' );
       require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class.cf7-extensions-recomendation.php' );
       require_once ( CF7_EXTENTIONS_PL_PATH . 'admin/include/class-diagnostic-data.php' );
@@ -106,7 +120,7 @@ class Extensions_Cf7 {
       $link = sprintf(
           '<a href="%1$s">%2$s</a>',
           admin_url('admin.php?page=contat-form-list#/forms'),
-          __( 'Settings', 'cf7-extensions' )
+          esc_html__( 'Settings', 'cf7-extensions' )
       );
       array_unshift($links, $link);
       return $links; 
@@ -116,23 +130,33 @@ class Extensions_Cf7 {
    *enqueue script
   */
   public function extcf7_enqueue_script(){
-    wp_enqueue_script( 'extcf7-conditional-field-script', CF7_EXTENTIONS_PL_URL.'assets/js/conditional-field.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
-    wp_enqueue_script( 'extcf7-redirect-script', CF7_EXTENTIONS_PL_URL.'assets/js/redirect.js', array('jquery'),CF7_EXTENTIONS_PL_VERSION, true);
-    $localize_conditional_data = [
-      'animitation_status' => htcf7ext_get_option('htcf7ext_opt', 'animation_enable', 'on'),
-      'animitation_in_time' => htcf7ext_get_option('htcf7ext_opt', 'admimation_in_time', '250'),
-      'animitation_out_time' => htcf7ext_get_option('htcf7ext_opt', 'admimation_out_time', '250'),
-    ];
 
-    if ( class_exists( '\Elementor\Plugin' ) && ( \Elementor\Plugin::$instance->editor->is_edit_mode() || \Elementor\Plugin::$instance->preview->is_preview_mode() ) ) {
-      $localize_conditional_data['elementor_editor_mode'] = 'true';
-    } else {
-      $localize_conditional_data['elementor_editor_mode'] =  'false';
+
+    if( 'on' == htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','conditional_field_enable','on') ) {
+      wp_enqueue_script( 'extcf7-conditional-field-script', CF7_EXTENTIONS_PL_URL.'assets/js/conditional-field.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
+
+      $localize_conditional_data = [
+        'animitation_status' => htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','animation_enable','on'),
+        'animitation_in_time' => htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','admimation_in_time',250),
+        'animitation_out_time' => htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','admimation_out_time',250),
+      ];
+      if ( class_exists( '\Elementor\Plugin' ) && ( \Elementor\Plugin::$instance->editor->is_edit_mode() || \Elementor\Plugin::$instance->preview->is_preview_mode() ) ) {
+        $localize_conditional_data['elementor_editor_mode'] = 'true';
+      } else {
+        $localize_conditional_data['elementor_editor_mode'] =  'false';
+      }
+
+      wp_localize_script( 'extcf7-conditional-field-script', 'extcf7_conditional_settings', $localize_conditional_data);
+
     }
 
-    $localize_redirection_data = ['redirection_delay' => htcf7ext_get_option('htcf7ext_opt', 'redirection_delay', '200')];
-    wp_localize_script( 'extcf7-conditional-field-script', 'extcf7_conditional_settings', $localize_conditional_data);
-    wp_localize_script( 'extcf7-redirect-script', 'extcf7_redirection_settings', $localize_redirection_data);
+    if( 'on' == htcf7ext_get_module_option( 'htcf7ext_redirection_extension_module_settings','redirection_extension','redirection_enable','on' ) ) {
+
+      wp_enqueue_script( 'extcf7-redirect-script', CF7_EXTENTIONS_PL_URL.'assets/js/redirect.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
+      $localize_redirection_data = ['redirection_delay' => htcf7ext_get_module_option( 'htcf7ext_redirection_extension_module_settings','redirection_extension','redirection_delay', 200 )];
+
+      wp_localize_script( 'extcf7-redirect-script', 'extcf7_redirection_settings', $localize_redirection_data );
+    }
   }
 
   /**
@@ -146,18 +170,18 @@ class Extensions_Cf7 {
         return;
       }
       $activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $contact_form_7 . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $contact_form_7 );
-      $message = sprintf( __( '%1$sExtensions For CF7 %2$s requires %1$s"Contact Form 7"%2$s plugin to be active. Please activate Contact Form 7 to continue.', 'cf7-extensions' ), '<strong>', '</strong>');
-      $button_text = __( 'Activate Contact Form 7', 'cf7-extensions' );
+      $message = sprintf( esc_html__( '%1$sExtensions For CF7 %2$s requires %1$s"Contact Form 7"%2$s plugin to be active. Please activate Contact Form 7 to continue.', 'cf7-extensions' ), '<strong>', '</strong>');
+      $button_text = esc_html__( 'Activate Contact Form 7', 'cf7-extensions' );
     }else{
       if( ! current_user_can( 'activate_plugins' ) ) {
         return;
       }
       $activation_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=contact-form-7' ), 'install-plugin_contact-form-7' );
-      $message = sprintf( __( '%1$sExtensions For CF7.%2$s requires %1$s"Contact Form 7"%2$s plugin to be installed and activated. Please install Contact Form 7 to continue.', 'cf7-extensions' ), '<strong>', '</strong>' );
-      $button_text = __( 'Install Contact Form 7', 'cf7-extensions' );
+      $message = sprintf( esc_html__( '%1$sExtensions For CF7.%2$s requires %1$s"Contact Form 7"%2$s plugin to be installed and activated. Please install Contact Form 7 to continue.', 'cf7-extensions' ), '<strong>', '</strong>' );
+      $button_text = esc_html__( 'Install Contact Form 7', 'cf7-extensions' );
     }
     $button = '<p><a href="' . $activation_url . '" class="button-primary">' . $button_text . '</a></p>';
-    printf( '<div class="error"><p>%1$s</p>%2$s</div>', __( $message ), $button );
+    printf( '<div class="error"><p>%1$s</p>%2$s</div>', esc_html( $message ), $button );
   }
 
   /**

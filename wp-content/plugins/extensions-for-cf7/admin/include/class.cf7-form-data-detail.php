@@ -36,11 +36,17 @@ class Extensions_Cf7_Detail_Page implements Extensions_Cf7_Form_Datalist_Render
 
                 if ( !wp_verify_nonce( $nonce, "cf7_email_delete" ) ){
 
-                    wp_die(__('Sorry you are not authorised to do this','cf7_email_delete'));
+                    wp_die(esc_html__('Sorry you are not authorised to do this','cf7-extensions'));
                 }
             }
 
-            $delete_row     = $wpdb->get_results( "SELECT * FROM $table_name WHERE id = '$mail_form_id' LIMIT 1", OBJECT );
+            $delete_row = $wpdb->get_results( 
+                $wpdb->prepare(
+                    "SELECT * FROM $table_name WHERE id = '%d' LIMIT 1",
+                    $mail_form_id
+                ),
+                OBJECT 
+            );
             $del_row_value  = $delete_row[0]->form_value;
             $del_row_values = unserialize($del_row_value);
 
@@ -59,7 +65,14 @@ class Extensions_Cf7_Detail_Page implements Extensions_Cf7_Form_Datalist_Render
 		}
 
 
-        $mail_form_data = $wpdb->get_results( "SELECT * FROM $table_name WHERE 	form_id = '$current_form_id' AND id = '$mail_form_id' LIMIT 1", OBJECT );
+        $mail_form_data = $wpdb->get_results( 
+            $wpdb->prepare(
+                "SELECT * FROM $table_name WHERE form_id = '%d' AND id = '%d' LIMIT 1",
+                $current_form_id,
+                $mail_form_id
+            ), 
+            OBJECT 
+        );
         
 
         if ( empty($mail_form_data) ) {
@@ -86,8 +99,7 @@ class Extensions_Cf7_Detail_Page implements Extensions_Cf7_Form_Datalist_Render
                             $key_value = str_replace('your-', '', $key);
                             $key_value = str_replace( array('-','_'), ' ', $key_value);
                             $key_value = ucwords( $key_value );
-                            echo '<tr><th>Attachment :</th> <td><a href="'.$cfdb7_dirname.'/'.$data.'">'
-                            .$data.'</a></td></tr>';
+                            echo '<tr><th>'.esc_html__('Attachment :','cf7-extensions').'</th> <td><a href="'.esc_url( $cfdb7_dirname.'/'.$data ).'">'.$data.'</a></td></tr>';
                         }else{
                             if(is_array($data)){
                                 $key_value = str_replace('your-', '', $key);
@@ -95,13 +107,13 @@ class Extensions_Cf7_Detail_Page implements Extensions_Cf7_Form_Datalist_Render
                                 $key_value = ucwords( $key_value );
                                 $array_data =  implode(', ',$data);
                                 $array_data =  esc_html( $array_data );
-                                echo '<tr><th>'.$key_value.' :</th><td>'.nl2br($array_data).'</td></tr>';
+                                echo '<tr><th>'.esc_html($key_value).' :</th><td>'.nl2br($array_data).'</td></tr>';
                             }else{
                                 $key_value = str_replace('your-', '', $key);
                                 $key_value = str_replace( array('-','_'), ' ', $key_value);
                                 $key_value = ucwords( $key_value );
                                 $data    = esc_html( $data );
-                                echo '<tr><th>'.$key_value.' :</th><td>'.nl2br($data).'</td></tr>';
+                                echo '<tr><th>'.esc_html($key_value).' :</th><td>'.nl2br($data).'</td></tr>';
                             }
                         }
                     endforeach;
@@ -136,7 +148,7 @@ class Extensions_Cf7_Detail_Page implements Extensions_Cf7_Form_Datalist_Render
                                         }else{
                                            $ip_address = esc_html( $form_data['server_remote_addr'] );  
                                         } 
-                                        echo $ip_address ? $ip_address : 'Invalid Ip';
+                                        echo $ip_address ? $ip_address : esc_html__('Invalid Ip','cf7-extensions');
                                     ?></td>
                                 </tr>
                             <?php endif; ?>

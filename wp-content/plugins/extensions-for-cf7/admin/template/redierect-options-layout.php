@@ -39,7 +39,7 @@
 					<?php foreach ($pages as $page):
 					?>
 
-						<option value="<?php echo get_page_link($page->ID); ?>" <?php echo $redirect_page == get_page_link($page->ID)?'selected':''; ?>><?php echo $page->post_title ?></option>
+						<option value="<?php echo esc_url(get_page_link($page->ID)); ?>" <?php echo $redirect_page == esc_url(get_page_link($page->ID))?'selected':''; ?>><?php echo esc_html($page->post_title) ?></option>
 
 					<?php endforeach; ?>
 					</select>

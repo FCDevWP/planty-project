@@ -22,8 +22,8 @@ class Menu {
         $capability  = 'manage_options';
 
         $hook = add_menu_page(
-			__('HT Cf7 Extension','cf7-extensions'),
-			__('HT Cf7 Extension','cf7-extensions'),
+			esc_html__('HT Cf7 Extension','cf7-extensions'),
+			esc_html__('HT Cf7 Extension','cf7-extensions'),
             $capability,
             $slug,
             [ $this, 'plugin_page' ],
@@ -74,6 +74,7 @@ class Menu {
                 "reffer_link_enable" => htcf7ext_get_option('htcf7ext_opt', 'reffer_link_enable', 'on'),
             ],
             "htcf7ext_opt_extensions" => [
+                "mailchimp_extension" => htcf7ext_get_option('htcf7ext_opt_extensions', 'mailchimp_extension', 'on'),
                 "popup_extension" => 'off',
                 "repeater_field_extensions" => 'off',
                 "unique_field_extensions" => 'off',
@@ -94,41 +95,68 @@ class Menu {
             'settings'      => Options_Field::instance()->get_registered_settings(),
             'options'       => $settings_opt,
             'labels'        => [
-                'pro' => __( 'Pro', 'cf7-extensions' ),
+                'pro' => esc_html__( 'Pro', 'cf7-extensions' ),
                 'modal' => [
-                    'title' => __( 'BUY PRO', 'cf7-extensions' ),
-                    'buynow' => __( 'Buy Now', 'cf7-extensions' ),
-                    'desc' => __( 'Our free version is great, but it doesn\'t have all our advanced features. The best way to unlock all of the features in our plugin is by purchasing the pro version.', 'cf7-extensions' )
+                    'title' => esc_html__( 'BUY PRO', 'cf7-extensions' ),
+                    'buynow' => esc_html__( 'Buy Now', 'cf7-extensions' ),
+                    'desc' => esc_html__( 'Our free version is great, but it doesn\'t have all our advanced features. The best way to unlock all of the features in our plugin is by purchasing the pro version.', 'cf7-extensions' )
                 ],
                 'saveButton' => [
-                    'text'   => __( 'Save Settings', 'cf7-extensions' ),
-                    'saving' => __( 'Saving...', 'cf7-extensions' ),
-                    'saved'  => __( 'Data Saved', 'cf7-extensions' ),
+                    'text'   => esc_html__( 'Save Settings', 'cf7-extensions' ),
+                    'saving' => esc_html__( 'Saving...', 'cf7-extensions' ),
+                    'saved'  => esc_html__( 'Data Saved', 'cf7-extensions' ),
                 ],
                 'enableAllButton' => [
-                    'enable'   => __( 'Enable All', 'cf7-extensions' ),
-                    'disable'  => __( 'Disable All', 'cf7-extensions' ),
+                    'enable'   => esc_html__( 'Enable All', 'cf7-extensions' ),
+                    'disable'  => esc_html__( 'Disable All', 'cf7-extensions' ),
                 ],
                 'resetButton' => [
-                    'text'   => __( 'Reset All Settings', 'cf7-extensions' ),
-                    'reseting'  => __( 'Resetting...', 'cf7-extensions' ),
-                    'reseted'  => __( 'All Data Restored', 'cf7-extensions' ),
+                    'text'   => esc_html__( 'Reset All Settings', 'cf7-extensions' ),
+                    'reseting'  => esc_html__( 'Resetting...', 'cf7-extensions' ),
+                    'reseted'  => esc_html__( 'All Data Restored', 'cf7-extensions' ),
                     'alert' => [
                         'one'=>[
-                            'title' => __( 'Are you sure?', 'cf7-extensions' ),
-                            'text' => __( 'It will reset all the settings to default, and all the changes you made will be deleted.', 'cf7-extensions' ),
-                            'confirm' => __( 'Yes', 'cf7-extensions' ),
-                            'cancel' => __( 'No', 'cf7-extensions' ),
+                            'title' => esc_html__( 'Are you sure?', 'cf7-extensions' ),
+                            'text' => esc_html__( 'It will reset all the settings to default, and all the changes you made will be deleted.', 'cf7-extensions' ),
+                            'confirm' => esc_html__( 'Yes', 'cf7-extensions' ),
+                            'cancel' => esc_html__( 'No', 'cf7-extensions' ),
                         ],
                         'two'=>[
-                            'title' => __( 'Reset!', 'cf7-extensions' ),
-                            'text' => __( 'All settings has been reset successfully.', 'cf7-extensions' ),
-                            'confirm' => __( 'OK', 'cf7-extensions' ),
+                            'title' => esc_html__( 'Reset!', 'cf7-extensions' ),
+                            'text' => esc_html__( 'All settings has been reset successfully.', 'cf7-extensions' ),
+                            'confirm' => esc_html__( 'OK', 'cf7-extensions' ),
                         ]
                     ],
                 ]
             ]
         ];
+        // update existing data to new conditional module settings default option
+        $updated_conditional_options = [
+            "conditional_field" =>  wp_json_encode([
+                "conditional_field_enable" => "on",
+                "conditional_mode"         => htcf7ext_get_option('htcf7ext_opt', 'conditional_mode','normal'),
+                "animation_enable"         => htcf7ext_get_option('htcf7ext_opt', 'animation_enable','on'),
+                "admimation_in_time"       => htcf7ext_get_option('htcf7ext_opt', 'admimation_in_time',250),
+                "admimation_out_time"      => htcf7ext_get_option('htcf7ext_opt', 'admimation_out_time',250),
+            ]),
+        ];
+        
+        if ( empty( htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings' ) ) ) {
+            update_option( 'htcf7ext_conditional_field_module_settings' , $updated_conditional_options );
+        }
+
+        // update existing data to new redirection module settings default option
+        $updated_redirection_options = [
+            "redirection_extension" =>  wp_json_encode([
+                "redirection_enable" => "on",
+                "redirection_delay"  => htcf7ext_get_option('htcf7ext_opt', 'redirection_delay',200),
+            ]),
+        ];
+        
+        if ( empty( htcf7ext_get_module_option( 'htcf7ext_redirection_extension_module_settings' ) ) ) {
+            update_option( 'htcf7ext_redirection_extension_module_settings' , $updated_redirection_options );
+        }
+
         wp_localize_script( 'htcf7extopt-admin', 'htcf7extOptions', $option_localize_script );
     }
 

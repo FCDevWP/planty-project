@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions For CF7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-17 06:39+0000\n"
+"POT-Creation-Date: 2024-03-08 11:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,21 +13,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4.2\n"
+"X-Loco-Version: 2.6.6; wp-6.4.3\n"
 "X-Domain: cf7-extensions"
 
-#: includes/class.cf7-extensions.php:146
+#: includes/class.cf7-extensions.php:173
 #, php-format
 msgid ""
 "%1$sExtensions For CF7 %2$s requires %1$s\"Contact Form 7\"%2$s plugin to be "
 "active. Please activate Contact Form 7 to continue."
 msgstr ""
 
-#: includes/class.cf7-extensions.php:153
+#: includes/class.cf7-extensions.php:180
 #, php-format
 msgid ""
 "%1$sExtensions For CF7.%2$s requires %1$s\"Contact Form 7\"%2$s plugin to be "
 "installed and activated. Please install Contact Form 7 to continue."
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:146
+msgid "- Configure your form in exactly the same way as the"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:137
+msgid "- To create forms with user acceptability like"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:155
+msgid "- Use the tag [confirm-subscribe] in the MailChimp's settings as like"
 msgstr ""
 
 #: admin/include/class.cf7-conditional.php:106
@@ -43,6 +55,7 @@ msgid "---select---"
 msgstr ""
 
 #: admin/template/pro-feature-list.php:46
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:288
 msgid "Acceptance Field"
 msgstr ""
 
@@ -50,7 +63,7 @@ msgstr ""
 msgid "Acceptance Field: "
 msgstr ""
 
-#: includes/class.cf7-extensions.php:147
+#: includes/class.cf7-extensions.php:174
 msgid "Activate Contact Form 7"
 msgstr ""
 
@@ -58,20 +71,50 @@ msgstr ""
 msgid "Add Condition"
 msgstr ""
 
+#: admin/template/mailchimp-pannel-layout.php:117
+msgid "Add Custom Field"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:64
+msgid "Add more fields to send Mailchimp.com"
+msgstr ""
+
 #: admin/template/conditional-field-layout.php:38
 msgid "Add New Condition"
 msgstr ""
 
 #: admin/template/pro-feature-list.php:30
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:270
 msgid "Advanced Telephone"
+msgstr ""
+
+#: admin/settings-panel/includes/templates/sidebar-banner.php:10
+msgid "Advanced Telephone (Flag and Country Code)"
 msgstr ""
 
 #: admin/template/pro-feature-list.php:73
 msgid "Advanced Telephone: "
 msgstr ""
 
+#: admin/settings-panel/includes/templates/dashboard-submissions.php:16
+msgid "All"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:116
+msgid "All Data Restored"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:126
+msgid "All settings has been reset successfully."
+msgstr ""
+
 #: admin/template/pro-feature-list.php:22
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:261
 msgid "Already Submitted"
+msgstr ""
+
+#: admin/settings-panel/includes/templates/sidebar-banner.php:12
+msgid "Already Submitted Message"
 msgstr ""
 
 #: admin/template/pro-feature-list.php:70
@@ -79,18 +122,21 @@ msgid "Already Submitted: "
 msgstr ""
 
 #: admin/template/conditional-setting.php:21
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:204
 msgid "Animation"
 msgstr ""
 
 #: admin/template/conditional-setting.php:30
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:214
 msgid "Animation In Time"
 msgstr ""
 
 #: admin/template/conditional-setting.php:37
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:227
 msgid "Animation Out Time"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:420
+#: admin/include/class.cf7-form-data-list.php:521
 msgid "Apply"
 msgstr ""
 
@@ -99,6 +145,15 @@ msgid ""
 "Are you getting frustrated with WooCommerce’s current way of presenting the "
 "variants for your products? Well, say goodbye to dropdowns and start showing "
 "the product variations in a whole new light with Swatchly."
+msgstr ""
+
+#: admin/include/class.cf7-form-data-list.php:301
+#: admin/include/class.cf7-form-data-list.php:310
+msgid "Are you sure to delete this file"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:119
+msgid "Are you sure?"
 msgstr ""
 
 #: admin/include/class-diagnostic-data.php:486
@@ -115,23 +170,32 @@ msgid ""
 "guaranteed. %4$sPrivacy Policy%5$s"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:414
+#: admin/include/tmpl-form-data.php:36
+#: admin/include/class.cf7-form-data-detail.php:102
+msgid "Attachment :"
+msgstr ""
+
+#: admin/include/class.cf7-form-data-list.php:515
 msgid "Bulk Actions"
 msgstr ""
 
-#: admin/admin-init.php:43 admin/admin-init.php:44
-msgid "Cf7 Conditional"
+#: admin/settings-panel/includes/classes/Admin/Menu.php:101
+msgid "Buy Now"
 msgstr ""
 
-#: admin/admin-init.php:34 admin/admin-init.php:35
-msgid "Cf7 DB"
+#: admin/settings-panel/includes/classes/Admin/Menu.php:100
+msgid "BUY PRO"
 msgstr ""
 
-#: admin/admin-init.php:52 admin/admin-init.php:53
-msgid "Cf7 Redirection"
+#: admin/include/class.cf7-mailchimp-map.php:236
+msgid "City"
 msgstr ""
 
-#: admin/admin-init.php:144
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:174
+msgid "Conditional Field"
+msgstr ""
+
+#: admin/admin-init.php:82
 msgid "Conditional Field Options"
 msgstr ""
 
@@ -149,8 +213,16 @@ msgstr ""
 msgid "Conditional fields Settings"
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:190
+msgid "Conditional UI Mode"
+msgstr ""
+
 #: admin/template/conditional-setting.php:11
 msgid "Conditional Ui Mode"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:9
+msgid "Connect With MailChimp"
 msgstr ""
 
 #: admin/template/pro-feature-list.php:69
@@ -177,6 +249,10 @@ msgstr ""
 msgid "Count Me In"
 msgstr ""
 
+#: admin/include/class.cf7-mailchimp-map.php:239
+msgid "Country"
+msgstr ""
+
 #: admin/include/class.cf7-extensions-recomendation.php:333
 msgid "Coupon Zen"
 msgstr ""
@@ -186,18 +262,39 @@ msgstr ""
 msgid "Custom URL"
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Menu.php:107
+msgid "Data Saved"
+msgstr ""
+
 #: admin/include/class.cf7-extensions-recomendation.php:327
 msgid "DataCaptia"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:243
+#: admin/include/class.cf7-form-data-list.php:328
+#: admin/include/class.download-csv.php:53
 msgid "Date"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:216
-#: admin/include/class.cf7-form-data-list.php:225
-#: admin/include/class.cf7-form-data-list.php:297
+#: admin/include/tmpl-form-data.php:24
+msgid "Date :"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:194
+msgid "Default"
+msgstr ""
+
+#: admin/include/class.cf7-form-data-list.php:301
+#: admin/include/class.cf7-form-data-list.php:310
+#: admin/include/class.cf7-form-data-list.php:388
 msgid "Delete"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:128
+msgid "Disable"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:111
+msgid "Disable All"
 msgstr ""
 
 #: admin/include/class.cf7-extensions-recomendation.php:269
@@ -208,8 +305,16 @@ msgstr ""
 msgid "Docus – YouTube Video Playlist"
 msgstr ""
 
+#: admin/template/mailchimp-pannel-layout.php:16
+msgid "Don't know how to get a Mailchimp API key? Get it from"
+msgstr ""
+
 #: admin/template/redierect-options-layout.php:76
 msgid "Don't need to use <script> tag."
+msgstr ""
+
+#: admin/settings-panel/includes/templates/sidebar-banner.php:9
+msgid "Drag & Drop File Upload"
 msgstr ""
 
 #: admin/template/pro-feature-list.php:69
@@ -217,14 +322,16 @@ msgid "Drag & Drop File Upload: "
 msgstr ""
 
 #: admin/template/pro-feature-list.php:38
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:279
 msgid "Drag and Drop File Upload"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-detail.php:73
+#: admin/include/tmpl-form-data.php:20
+#: admin/include/class.cf7-form-data-detail.php:86
 msgid "Email Information"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:17
+#: admin/include/class.cf7-form-data-list.php:16
 msgid "Email List"
 msgstr ""
 
@@ -235,7 +342,17 @@ msgid ""
 "and popular by keeping the visitors on your website for a longer period."
 msgstr ""
 
+#: admin/include/class.cf7-mailchimp-map.php:163
+#: admin/include/class.cf7-mailchimp-map.php:188
+msgid "empty list"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:110
+msgid "Enable All"
+msgstr ""
+
 #: admin/template/conditional-setting.php:26
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:209
 msgid "Enable Conditional Field Animation to show and hide field."
 msgstr ""
 
@@ -256,21 +373,35 @@ msgstr ""
 msgid "Enable the option to open the redirection page in a new tab."
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:128
+msgid "Enable this option to make the referrer link visible."
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:119
+msgid "Enable this option to make the sender's IP Address visible."
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:67
+msgid "Enable/Disable Extensions"
+msgstr ""
+
 #: admin/template/conditional-field-layout.php:25
 msgid "equal"
 msgstr ""
 
-#: includes/class.cf7-extensions.php:166
+#: includes/class.cf7-extensions.php:193
 msgid ""
 "Error: Contact Form 7 version is too old. Extensions For CF7 is compatible "
 "from version 5.3 and above. Please update Contact Form 7."
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:286
+#: admin/include/class.cf7-form-data-list.php:377
 msgid "Export CSV"
 msgstr ""
 
-#: admin/admin-init.php:70 admin/admin-init.php:71 admin/admin-init.php:191
+#: admin/admin-init.php:129
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:60
+#: admin/settings-panel/includes/classes/Admin/Menu.php:38
 msgid "Extensions"
 msgstr ""
 
@@ -286,20 +417,49 @@ msgstr ""
 msgid "Faster YouTube Embed"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:271
+#: admin/include/class.cf7-form-data-list.php:356
 msgid "Filter"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:241
+#: admin/include/class.cf7-form-data-list.php:326
 msgid "Form Data"
 msgstr ""
 
+#: admin/include/class.download-csv.php:53
+msgid "Form Id"
+msgstr ""
+
 #: admin/include/class.cf7-post-list.php:53
+#: admin/settings-panel/includes/templates/dashboard-forms.php:33
 msgid "Form Name"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:242
+#: admin/include/class.cf7-form-data-list.php:327
 msgid "Form Title"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:27
+#: admin/settings-panel/includes/classes/Admin/Menu.php:35
+msgid "Forms"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:32
+msgid "Free VS Pro"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:33
+msgid ""
+"Freely use these elements to create your site. You can enable which you are "
+"not using, and, all associated assets will be disable to improve your site "
+"loading speed."
+msgstr ""
+
+#: admin/include/class.cf7-form-data-list.php:339
+msgid "From"
+msgstr ""
+
+#: admin/settings-panel/includes/templates/sidebar-banner.php:11
+msgid "GDPR Field to take permission"
 msgstr ""
 
 #: admin/include/class.cf7-conditional.php:73
@@ -309,6 +469,7 @@ msgid ""
 msgstr ""
 
 #: admin/template/pro-feature-list.php:79
+#: admin/settings-panel/includes/templates/sidebar-banner.php:15
 msgid "Get Pro Now"
 msgstr ""
 
@@ -316,11 +477,21 @@ msgstr ""
 msgid "Get pro now"
 msgstr ""
 
-#: admin/template/conditional-field-layout.php:56
+#: admin/settings-panel/includes/templates/sidebar-banner.php:22
+msgid "Get Support"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:49
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:54
+#: admin/settings-panel/includes/classes/Admin/Menu.php:37
+msgid "Global Settings"
+msgstr ""
+
+#: admin/template/conditional-field-layout.php:55
 msgid "Go To Conditional Settings"
 msgstr ""
 
-#: admin/admin-init.php:173 admin/template/conditional-setting.php:49
+#: admin/admin-init.php:111 admin/template/conditional-setting.php:49
 msgid "Go To Contact Form 7 Editor"
 msgstr ""
 
@@ -358,7 +529,12 @@ msgstr ""
 msgid "HasThemes"
 msgstr ""
 
-#: admin/admin-init.php:23 admin/admin-init.php:24
+#: admin/template/mailchimp-pannel-layout.php:16
+msgid "here"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:25
+#: admin/settings-panel/includes/classes/Admin/Menu.php:26
 msgid "HT Cf7 Extension"
 msgstr ""
 
@@ -372,6 +548,10 @@ msgstr ""
 
 #: admin/include/class.cf7-extensions-recomendation.php:291
 msgid "HT Feed"
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:37
+msgid "HT MailChimp"
 msgstr ""
 
 #: admin/include/class.cf7-extensions-recomendation.php:55
@@ -443,6 +623,10 @@ msgstr ""
 msgid "https://hasthemes.com/"
 msgstr ""
 
+#: admin/settings-panel/includes/templates/dashboard-forms.php:32
+msgid "ID"
+msgstr ""
+
 #: admin/include/class.cf7-extensions-recomendation.php:245
 msgid ""
 "If you are searching for a modern and excellent google places review "
@@ -451,13 +635,27 @@ msgid ""
 "Review"
 msgstr ""
 
+#: admin/settings-panel/includes/templates/sidebar-banner.php:21
+msgid ""
+"If you have any questions, concerns, or feedback, please do not hesitate to "
+"reach out to us. We are always available and ready to assist you with your "
+"needs. Thank you for choosing our products and services, and we look forward "
+"to hearing from you soon!"
+msgstr ""
+
+#: admin/template/conditional-field-layout.php:40
+msgid ""
+"If You use a single input checkbox field for condition, then You have to "
+"fill the conditional value filed with \"checked\"."
+msgstr ""
+
 #: admin/template/pro-feature-list.php:90
 msgid ""
 "If you’re loving how our product has helped your business, please let the "
 "WordPress community know by"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:278
+#: admin/include/class.cf7-form-data-list.php:369
 msgid "Import CSV"
 msgstr ""
 
@@ -467,16 +665,29 @@ msgid ""
 "milliseconds and it will be applied for each field. Default Value:250"
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:219
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:232
+msgid ""
+"Input a positive integer value for animation in time. The values in "
+"milliseconds and it will be applied for each field. Default: 250"
+msgstr ""
+
 #: admin/template/conditional-setting.php:40
 msgid ""
 "Input a positive integer value for animation out time. The values in "
 "milliseconds and it will be applied for each field. Default Value:250"
 msgstr ""
 
-#: admin/admin-init.php:167
+#: admin/admin-init.php:105
 msgid ""
 "Input a positive integer value for the dalay of redirection. The values in "
 "milliseconds(Default:200)"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:157
+msgid ""
+"Input a positive integer value for the dalay of redirection. The values in "
+"milliseconds. Default:200"
 msgstr ""
 
 #: admin/template/redierect-options-layout.php:52
@@ -501,16 +712,36 @@ msgstr ""
 msgid "Insert Tag"
 msgstr ""
 
-#: includes/class.cf7-extensions.php:154
+#: includes/class.cf7-extensions.php:181
 msgid "Install Contact Form 7"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:86
+#: admin/template/mailchimp-pannel-layout.php:15
+msgid "Invalid Api Key"
+msgstr ""
+
+#: admin/include/class.cf7-form-data-list.php:85
 msgid "Invalid file.Please import a csv file"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-detail.php:128
+#: admin/include/tmpl-form-data.php:84
+#: admin/include/class.cf7-form-data-detail.php:151
+msgid "Invalid Ip"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:114
+msgid "IP Address"
+msgstr ""
+
+#: admin/include/tmpl-form-data.php:73
+#: admin/include/class.cf7-form-data-detail.php:140
 msgid "IP Address :"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:120
+msgid ""
+"It will reset all the settings to default, and all the changes you made will "
+"be deleted."
 msgstr ""
 
 #: admin/template/redierect-options-layout.php:65
@@ -543,10 +774,22 @@ msgstr ""
 msgid "leaving us a review on our WP repository"
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:166
+msgid "MailChimp"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:6
+msgid "MailChimp Api Key:"
+msgstr ""
+
 #: admin/template/pro-feature-list.php:73
 msgid ""
 "Make the telephone input field more attractive with the list of country flag "
 "and dial codes."
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:71
+msgid "Map Contact Form 7 Fields with Mailchimp Field"
 msgstr ""
 
 #: admin/include/class.cf7-extensions-recomendation.php:121
@@ -568,6 +811,14 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Menu.php:122
+msgid "No"
+msgstr ""
+
+#: admin/include/tmpl-form-data.php:15
+msgid "No data found!"
+msgstr ""
+
 #: admin/include/class-diagnostic-data.php:493
 msgid "No, Thanks"
 msgstr ""
@@ -584,8 +835,65 @@ msgstr ""
 msgid "not equal"
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:118
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:127
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:148
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:156
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:170
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:186
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:198
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:208
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:218
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:231
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:247
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:256
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:265
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:274
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:283
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:292
+msgid "Off"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:127
+msgid "OK"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:117
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:126
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:147
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:155
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:169
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:185
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:197
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:207
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:217
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:230
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:246
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:255
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:264
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:273
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:282
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:291
+msgid "On"
+msgstr ""
+
 #: admin/include/class.cf7-extensions-recomendation.php:279
 msgid "Others"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:102
+msgid ""
+"Our free version is great, but it doesn't have all our advanced features. "
+"The best way to unlock all of the features in our plugin is by purchasing "
+"the pro version."
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:244
+msgid "PHONE"
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:245
+msgid "Phone Number"
 msgstr ""
 
 #: admin/include/class.cf7-redirection.php:51
@@ -601,6 +909,7 @@ msgid "Please save your form first."
 msgstr ""
 
 #: admin/template/pro-feature-list.php:6
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:243
 msgid "Popup Form Response"
 msgstr ""
 
@@ -610,6 +919,10 @@ msgstr ""
 
 #: admin/include/class.cf7-extensions-recomendation.php:309
 msgid "Preview Link Generator"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:98
+msgid "Pro"
 msgstr ""
 
 #: admin/include/class.cf7-extensions-recomendation.php:152
@@ -641,10 +954,12 @@ msgid "Redirect to New Tab"
 msgstr ""
 
 #: admin/template/redierect-options-layout.php:17
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:136
 msgid "Redirection"
 msgstr ""
 
-#: admin/admin-init.php:164
+#: admin/admin-init.php:102
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:152
 msgid "Redirection Delay"
 msgstr ""
 
@@ -653,15 +968,26 @@ msgstr ""
 msgid "Redirection Options"
 msgstr ""
 
-#: admin/admin-init.php:154
+#: admin/admin-init.php:92
 msgid "Redirection Setting"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-detail.php:122
+#: admin/include/tmpl-form-data.php:67
+#: admin/include/class.cf7-form-data-detail.php:134
 msgid "Referer :"
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:123
+msgid "Referer Link"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:89
+msgid "Remove"
+msgstr ""
+
 #: admin/template/pro-feature-list.php:14
+#: admin/settings-panel/includes/templates/sidebar-banner.php:8
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:252
 msgid "Repeater Field"
 msgstr ""
 
@@ -679,8 +1005,51 @@ msgid ""
 "attract visitors."
 msgstr ""
 
+#: admin/template/mailchimp-pannel-layout.php:45
+#: admin/template/mailchimp-pannel-layout.php:52
+msgid "Required"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:133
+msgid "Required User Aacceptance"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:114
+msgid "Reset All Settings"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:125
+msgid "Reset!"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:115
+msgid "Resetting..."
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:105
+msgid "Save Settings"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Menu.php:106
+msgid "Saving..."
+msgstr ""
+
 #: admin/template/redierect-options-layout.php:35
 msgid "Select a page"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:78
+#: admin/template/mailchimp-pannel-layout.php:98
+msgid "Select Contact Form Field"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:82
+#: admin/template/mailchimp-pannel-layout.php:106
+msgid "Select Mailchimp Field"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:52
+msgid "Selected tag will be send as subscriber name."
 msgstr ""
 
 #: admin/include/class-diagnostic-data.php:488
@@ -692,12 +1061,20 @@ msgid ""
 "collected or tracked. %1$sLearn more%2$s."
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:199
+msgid "Set the Conditional Ui mode."
+msgstr ""
+
 #: admin/template/conditional-setting.php:17
 msgid "Set the Conditional Ui mode.(Default:Normal)"
 msgstr ""
 
-#: includes/class.cf7-extensions.php:106 admin/admin-init.php:61
-#: admin/admin-init.php:62 admin/admin-init.php:181
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:55
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:68
+msgid "Set the fields value to use these features"
+msgstr ""
+
+#: includes/class.cf7-extensions.php:123 admin/admin-init.php:119
 msgid "Settings"
 msgstr ""
 
@@ -709,16 +1086,55 @@ msgstr ""
 msgid "Sirve – Simple Directory Listing"
 msgstr ""
 
+#: admin/include/class.cf7-form-data-detail.php:39
+msgid "Sorry you are not authorised to do this"
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:237
+msgid "State"
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:234
+msgid "Street Line 1"
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:235
+msgid "Street Line 2"
+msgstr ""
+
 #: admin/include/class.cf7-post-list.php:54
 msgid "Submission Count"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-detail.php:117
+#: admin/include/tmpl-form-data.php:62
+#: admin/include/class.cf7-form-data-detail.php:129
 msgid "Submission Details"
 msgstr ""
 
-#: admin/include/class.cf7-form-data-list.php:197
+#: admin/settings-panel/includes/templates/dashboard-forms.php:34
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:38
+#: admin/settings-panel/includes/classes/Admin/Menu.php:36
+msgid "Submissions"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:43
+msgid "Subscriber Email"
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:50
+msgid "Subscriber Name "
+msgstr ""
+
+#: admin/template/mailchimp-pannel-layout.php:125
+msgid "Subscription"
+msgstr ""
+
+#: admin/include/class.cf7-form-data-list.php:282
 msgid "Successfully Imported CSV File"
+msgstr ""
+
+#: admin/settings-panel/includes/templates/sidebar-banner.php:20
+msgid "Support And Feedback"
 msgstr ""
 
 #: admin/template/pro-feature-list.php:74
@@ -727,6 +1143,7 @@ msgid ""
 msgstr ""
 
 #: admin/template/conditional-setting.php:15
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:195
 msgid "Text Mode"
 msgstr ""
 
@@ -735,18 +1152,37 @@ msgstr ""
 msgid "Thank you very much for supporting %2$s%1$s%3$s."
 msgstr ""
 
+#: admin/template/mailchimp-pannel-layout.php:45
+msgid ""
+"This field will receive subscriber emails so, make sure to select the email "
+"tag."
+msgstr ""
+
 #: admin/template/redierect-options-layout.php:78
 msgid ""
 "This options for developer only.If the javascript action doesn't work after "
 "form submission, it means You have a problem with your code."
 msgstr ""
 
+#: admin/include/class.cf7-form-data-list.php:341
+msgid "To"
+msgstr ""
+
 #: admin/template/pro-feature-list.php:70
 msgid "Trigger error if a field is already submitted"
 msgstr ""
 
+#: admin/settings-panel/includes/templates/sidebar-banner.php:13
+msgid "Validation Message in Popup"
+msgstr ""
+
 #. Description of the plugin
 msgid "Valuable Extensions for Contact Form 7."
+msgstr ""
+
+#: admin/include/class.cf7-form-data-list.php:300
+#: admin/include/class.cf7-form-data-list.php:309
+msgid "View"
 msgstr ""
 
 #: admin/include/class.cf7-extensions-recomendation.php:251
@@ -826,8 +1262,28 @@ msgid ""
 "your WordPress site to improve the overall site performance."
 msgstr ""
 
+#: admin/settings-panel/includes/classes/Admin/Menu.php:121
+msgid "Yes"
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:181
+msgid "You can enable / disable Connditional Field from here."
+msgstr ""
+
+#: admin/settings-panel/includes/classes/Admin/Options_field.php:143
+msgid "You can enable / disable redirection from here."
+msgstr ""
+
 #: admin/include/class.cf7-extensions-recomendation.php:128
 msgid "You May Also Like"
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:289
+msgid "Your mailchimp lists: "
+msgstr ""
+
+#: admin/include/class.cf7-mailchimp-map.php:238
+msgid "Zip"
 msgstr ""
 
 #: admin/include/class-diagnostic-data.php:498

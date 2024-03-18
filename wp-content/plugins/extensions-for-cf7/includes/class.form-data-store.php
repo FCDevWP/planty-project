@@ -40,12 +40,14 @@ class Extensions_Cf7_Store_Data
 
             foreach ($cf7_data  as $key => $value){
                 if(!in_array($key, $cf7_uploaded_files )){
-                    $posted_fields_value[$key] = $value;
+                    $dataKey = esc_html($key);
+                    $posted_fields_value[$dataKey] = $value;
                 }
                 if ( in_array($key, $cf7_uploaded_files ) ){
+                    $dataKey = esc_html($key);
                     $file = is_array( $cf7_files[ $key ] ) ? reset( $cf7_files[ $key ] ) : $cf7_files[ $key ];
                     $file_name = empty( $file ) ? '' : $current_time.'-'.$key.'-'.basename( $file ); 
-                    $posted_fields_value[$key] = $file_name;
+                    $posted_fields_value[$dataKey] = $file_name;
                 }
             }
 

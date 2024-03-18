@@ -10,16 +10,16 @@ $contact_form_title = !empty($_GET['cf7_id']) ? "Of - "  . get_the_title($_GET['
 ob_start();
 ?>
 <div class="wrapp htcf7ext-submissions">
-    <div><?php _e("Email List $contact_form_title","cf7-extensions") ?></div>
+    <div><?php esc_html_e("Email List $contact_form_title","cf7-extensions"); ?></div>
     <ul class="subsubsub">
         <li class="all">
-            <a href="#" aria-current="page">All</a>
+            <a href="#" aria-current="page"><?php esc_html_e('All','cf7-extensions');?></a>
         </li>
     </ul>
     <form method="post" action="" enctype="multipart/form-data">
         <?php
-        $eamil_list_table->search_box('search','search_id');  
-        $eamil_list_table->display();
+            $eamil_list_table->search_box('search','search_id');  
+            $eamil_list_table->display();
         ?>
     </form>
 </div><!-- .wrap -->

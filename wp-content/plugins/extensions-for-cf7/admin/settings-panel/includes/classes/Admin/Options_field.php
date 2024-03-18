@@ -29,9 +29,8 @@ class Options_Field {
                 'content' => [
                     'header' => false,
                     'footer' => false,
-                    'title' => __( 'Free VS Pro', 'cf7-extensions' ),
-                    'desc'  => __( 'Freely use these elements to create your site. You can enable which you are not using, and, all associated assets will be disable to improve your site loading speed.', 'cf7-extensions' ),
-                    'extraClass' => 'azadd',
+                    'title' => esc_html__( 'Free VS Pro', 'cf7-extensions' ),
+                    'desc'  => esc_html__( 'Freely use these elements to create your site. You can enable which you are not using, and, all associated assets will be disable to improve your site loading speed.', 'cf7-extensions' )
                 ],
             ],
             'entries' => array(
@@ -52,8 +51,8 @@ class Options_Field {
                 'content' => [
                     'header' => false,
                     'enableall' => false,
-                    'title' => __( 'Global Settings', 'cf7-extensions' ),
-                    'desc'  => __( 'Set the fields value to use these features', 'cf7-extensions' ),
+                    'title' => esc_html__( 'Global Settings', 'cf7-extensions' ),
+                    'desc'  => esc_html__( 'Set the fields value to use these features', 'cf7-extensions' ),
                 ],
             ),
             'extensions' => array(
@@ -62,11 +61,11 @@ class Options_Field {
                 'icon'  => 'dashicons dashicons-superhero',
                 'content' => [
                     'header' => false,
-                    'footer' => false,
+                    'footer' => true,
                     'column' => 3,
                     'enableall' => false,
-                    'title' => __( 'Enable/Disable Extensions', 'cf7-extensions' ),
-                    'desc'  => __( 'Set the fields value to use these features', 'cf7-extensions' ),
+                    'title' => esc_html__( 'Enable/Disable Extensions', 'cf7-extensions' ),
+                    'desc'  => esc_html__( 'Set the fields value to use these features', 'cf7-extensions' ),
                 ],
             ),
         );
@@ -112,126 +111,185 @@ class Options_Field {
             'htcf7ext_opt' => array(
                 array(
                     'id'  => 'ip_address_enable',
-                    'name'  => __( 'IP Address', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'IP Address', 'cf7-extensions' ),
                     'type'  => 'switcher',
                     'default'=>'on',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
-                    'desc' => __('Enable this option to make the sender\'s IP Address visible.', 'cf7-extensions')
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                    'desc' => esc_html__('Enable this option to make the sender\'s IP Address visible.', 'cf7-extensions')
                 ),
                 array(
                     'id'  => 'reffer_link_enable',
-                    'name'  => __( 'Referer Link', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'Referer Link', 'cf7-extensions' ),
                     'type'  => 'switcher',
                     'default'=>'on',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
-                    'desc' => __('Enable this option to make the referrer link visible.', 'cf7-extensions')
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                    'desc' => esc_html__('Enable this option to make the referrer link visible.', 'cf7-extensions')
                 ),
-                array(
-                    'id'  => 'conditional_mode',
-                    'name'  => __( 'Conditional UI Mode', 'cf7-extensions' ),
-                    'type'  => 'select',
-                    'default'=>'normal',
-                    'options' => array(
-                        'normal' => __('Default', 'cf7-extensions'),
-                        'text'   => __('Text Mode', 'cf7-extensions'),
-                    ),
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
-                    'desc' => __('Set the Conditional Ui mode.', 'cf7-extensions')
-                ),
-                array(
-                    'id'  => 'redirection_delay',
-                    'name'  => __( 'Redirection Delay', 'cf7-extensions' ),
-                    'type'  => 'number',
-                    'default'=>'250',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
-                    'desc' => __('Input a positive integer value for the dalay of redirection. The values in milliseconds. Default:200', 'cf7-extensions')
-                ),
-                array(
-                    'id'  => 'animation_enable',
-                    'name'  => __( 'Animation', 'cf7-extensions' ),
-                    'type'  => 'switcher',
-                    'default'=>'on',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
-                    'desc' => __('Enable Conditional Field Animation to show and hide field.', 'cf7-extensions')
-                ),
-                array(
-                    'id'  => 'admimation_in_time',
-                    'name'  => __( 'Animation In Time', 'cf7-extensions' ),
-                    'type'  => 'number',
-                    'default'=>'250',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
-                    'desc' => __('Input a positive integer value for animation in time. The values in milliseconds and it will be applied for each field. Default: 250', 'cf7-extensions')
-                ),
-                array(
-                    'id'  => 'admimation_out_time',
-                    'name'  => __( 'Animation Out Time', 'cf7-extensions' ),
-                    'type'  => 'number',
-                    'default'=>'250',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
-                    'desc' => __('Input a positive integer value for animation in time. The values in milliseconds and it will be applied for each field. Default: 250', 'cf7-extensions')
-                ),
+
             ),
 
             'htcf7ext_opt_extensions' => array(
                 array(
+                    'id'  => 'redirection_extension',
+                    'name'  => esc_html__( 'Redirection', 'cf7-extensions' ),
+                    'type'  => 'module',
+                    'section'  => 'htcf7ext_redirection_extension_module_settings',
+                    'setting_fields' => array(
+                        array(
+                            'id'  => 'redirection_enable',
+                            'name' => esc_html__( 'Enable / Disable' ),
+                            'desc'  => esc_html__( 'You can enable / disable redirection from here.', 'cf7-extensions' ),
+                            'type'  => 'checkbox',
+                            'default' => 'on',
+                            'class' => 'htcf7ext-action-field-left',
+                            'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                            'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                        ),
+                        array(
+                            'id'  => 'redirection_delay',
+                            'name'  => esc_html__( 'Redirection Delay', 'cf7-extensions' ),
+                            'type'  => 'number',
+                            'default'=>'250',
+                            'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                            'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                            'desc' => esc_html__('Input a positive integer value for the dalay of redirection. The values in milliseconds. Default:200', 'cf7-extensions'),
+                            'condition' => [['condition_key' => 'redirection_enable', 'condition_value' => 'on']]
+                        ),
+                    )
+                ),
+
+
+                array(
+                    'id'  => 'mailchimp_extension',
+                    'name'  => esc_html__( 'MailChimp', 'cf7-extensions' ),
+                    'type'  => 'element',
+                    'default'=>'on',
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                ),
+                array(
+                    'id'  => 'conditional_field',
+                    'name'  => esc_html__( 'Conditional Field', 'cf7-extensions' ),
+                    'type'  => 'module',
+                    'section'  => 'htcf7ext_conditional_field_module_settings',
+                    'setting_fields' => array(
+                        array(
+                            'id'  => 'conditional_field_enable',
+                            'name' => esc_html__( 'Enable / Disable' ),
+                            'desc'  => esc_html__( 'You can enable / disable Connditional Field from here.', 'cf7-extensions' ),
+                            'type'  => 'checkbox',
+                            'default' => 'on',
+                            'class' => 'htcf7ext-action-field-left',
+                            'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                            'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                        ),
+                        array(
+                            'id'  => 'conditional_mode',
+                            'name'  => esc_html__( 'Conditional UI Mode', 'cf7-extensions' ),
+                            'type'  => 'select',
+                            'default'=>'normal',
+                            'options' => array(
+                                'normal' => esc_html__('Default', 'cf7-extensions'),
+                                'text'   => esc_html__('Text Mode', 'cf7-extensions'),
+                            ),
+                            'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                            'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                            'desc' => esc_html__('Set the Conditional Ui mode.', 'cf7-extensions'),
+                            'condition' => [['condition_key' => 'conditional_field_enable', 'condition_value' => 'on']]
+                        ),
+                        array(
+                            'id'  => 'animation_enable',
+                            'name'  => esc_html__( 'Animation', 'cf7-extensions' ),
+                            'type'  => 'checkbox',
+                            'default'=>'on',
+                            'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                            'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                            'desc' => esc_html__('Enable Conditional Field Animation to show and hide field.', 'cf7-extensions'),
+                            'condition' => [['condition_key' => 'conditional_field_enable', 'condition_value' => 'on']]
+                        ),
+                        array(
+                            'id'  => 'admimation_in_time',
+                            'name'  => esc_html__( 'Animation In Time', 'cf7-extensions' ),
+                            'type'  => 'number',
+                            'default'=>'250',
+                            'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                            'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                            'desc' => esc_html__('Input a positive integer value for animation in time. The values in milliseconds and it will be applied for each field. Default: 250', 'cf7-extensions'),
+                            'condition' => [
+                                ['condition_key' => 'conditional_field_enable', 'condition_value' => 'on'],
+                                ['condition_key' => 'animation_enable', 'condition_value' => 'on']
+                            ]
+                        ),
+                        array(
+                            'id'  => 'admimation_out_time',
+                            'name'  => esc_html__( 'Animation Out Time', 'cf7-extensions' ),
+                            'type'  => 'number',
+                            'default'=>'250',
+                            'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                            'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
+                            'desc' => esc_html__('Input a positive integer value for animation in time. The values in milliseconds and it will be applied for each field. Default: 250', 'cf7-extensions'),
+                            'condition' => [
+                                ['condition_key' => 'conditional_field_enable', 'condition_value' => 'on'],
+                                ['condition_key' => 'animation_enable', 'condition_value' => 'on']
+                            ]
+                        ),
+
+                    )
+                ),
+                array(
                     'id'  => 'popup_extension',
-                    'name'  => __( 'Popup Form Response', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'Popup Form Response', 'cf7-extensions' ),
                     'type'  => 'element',
                     'default'=>'off',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
                     'is_pro' => true,
                 ),
                 array(
                     'id'  => 'repeater_field_extensions',
-                    'name'  => __( 'Repeater Field', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'Repeater Field', 'cf7-extensions' ),
                     'type'  => 'element',
                     'default'=>'off',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
                     'is_pro' => true,
                 ),
                 array(
                     'id'  => 'unique_field_extensions',
-                    'name'  => __( 'Already Submitted', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'Already Submitted', 'cf7-extensions' ),
                     'type'  => 'element',
                     'default'=>'off',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
                     'is_pro' => true,
                 ),
                 array(
                     'id'  => 'advance_telephone',
-                    'name'  => __( 'Advanced Telephone', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'Advanced Telephone', 'cf7-extensions' ),
                     'type'  => 'element',
                     'default'=>'off',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
                     'is_pro' => true,
                 ),
                 array(
                     'id'  => 'drag_and_drop_upload',
-                    'name'  => __( 'Drag and Drop File Upload', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'Drag and Drop File Upload', 'cf7-extensions' ),
                     'type'  => 'element',
                     'default'=>'off',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
                     'is_pro' => true,
                 ),
                 array(
                     'id'  => 'acceptance_field',
-                    'name'  => __( 'Acceptance Field', 'cf7-extensions' ),
+                    'name'  => esc_html__( 'Acceptance Field', 'cf7-extensions' ),
                     'type'  => 'element',
                     'default'=>'off',
-                    'label_on' => __( 'On', 'cf7-extensions' ),
-                    'label_off' => __( 'Off', 'cf7-extensions' ),
+                    'label_on' => esc_html__( 'On', 'cf7-extensions' ),
+                    'label_off' => esc_html__( 'Off', 'cf7-extensions' ),
                     'is_pro' => true,
                 ),
             ),

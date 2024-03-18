@@ -34,7 +34,7 @@ class Extensions_Cf7_Redirection{
     public function add_redirection_panel($panels){
     	if ( current_user_can( 'wpcf7_edit_contact_form' ) ) {
 	    	$panels['extcf7-redirect-panel'] = array(
-				'title'    => __( 'Redirect Actions', 'cf7-extensions' ),
+				'title'    => esc_html__( 'Redirect Actions', 'cf7-extensions' ),
 				'callback' => array( $this, 'redirection_pannel' ),
 			);
 		}

@@ -29,7 +29,7 @@ class Extensions_Cf7_Post_List implements Extensions_Cf7_Form_Datalist_Render
             $cf7_post_id = get_the_id();
             $title = get_the_title();
             $table_name = $wpdb->prefix . 'extcf7_db';
-            $total_email = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE form_id = $cf7_post_id");
+            $total_email = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE form_id = '%d' ", $cf7_post_id));
             $link  = "<a href=admin.php?page=contat-form-list&cf7_id=$cf7_post_id>%s</a>";
             $cf7_value['name']  = sprintf( $link, $title );
             $cf7_value['count'] = sprintf( $link, $total_email );

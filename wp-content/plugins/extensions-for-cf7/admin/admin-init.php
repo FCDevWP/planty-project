@@ -21,8 +21,9 @@ class Extensions_Cf7_Admin_Setting
 
             wp_enqueue_script( 'wp-jquery-ui-dialog');
             wp_enqueue_script( 'ht-cf7-admin-script', CF7_EXTENTIONS_PL_URL.'admin/assets/js/admin.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
+
             $localize_animation_data = [
-                'animitation_status' => htcf7ext_get_option('htcf7ext_opt', 'animation_enable', 'on')
+                'animitation_status' => htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','animation_enable','on' )
             ];
             wp_localize_script( 'ht-cf7-admin-script', 'extcf7_animation_info', $localize_animation_data);
 
@@ -33,21 +34,33 @@ class Extensions_Cf7_Admin_Setting
         }
 
         if('toplevel_page_wpcf7' === $hook ){
-            wp_enqueue_script( 'ht-cf7-conditional-script', CF7_EXTENTIONS_PL_URL.'admin/assets/js/conditional.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
-            wp_enqueue_script( 'ht-cf7-redirection-script', CF7_EXTENTIONS_PL_URL.'admin/assets/js/redirection.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
-            $localize_condition_mode_data=[
-                'conditional_mode' => htcf7ext_get_option('htcf7ext_opt','conditional_mode', 'normal'),
-            ];
-            wp_localize_script( 'ht-cf7-conditional-script', 'extcf7_conditional_mode', $localize_condition_mode_data);
-            $ajaxurl = "var ajaxurl='".admin_url( 'admin-ajax.php')."'";
-            wp_add_inline_script('ht-cf7-conditional-script',$ajaxurl);
 
-            wp_enqueue_script( 'ht-cf7-mailchimp-map-script', CF7_EXTENTIONS_PL_URL.'admin/assets/js/mailchimp-map.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
-            
-            $extcf7_mailchimp_map_data = [
-                'nonce' => wp_create_nonce('extcf7_mailchimp_map_active_nonce')
-            ];
-            wp_localize_script( 'ht-cf7-mailchimp-map-script', 'extcf7_mailchimp_map_data', $extcf7_mailchimp_map_data);
+            if ( 'on' == htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','conditional_field_enable','on' ) ) {
+                wp_enqueue_script( 'ht-cf7-conditional-script', CF7_EXTENTIONS_PL_URL.'admin/assets/js/conditional.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
+
+                $localize_condition_mode_data = [
+                    'conditional_mode' => htcf7ext_get_module_option( 'htcf7ext_conditional_field_module_settings','conditional_field','conditional_mode','normal'),
+                ];
+                wp_localize_script( 'ht-cf7-conditional-script', 'extcf7_conditional_mode', $localize_condition_mode_data);
+                $ajaxurl = "var ajaxurl='".admin_url( 'admin-ajax.php')."'";
+                wp_add_inline_script('ht-cf7-conditional-script',$ajaxurl);
+            }
+
+
+
+            if( 'on' == htcf7ext_get_module_option( 'htcf7ext_redirection_extension_module_settings','redirection_extension','redirection_enable','on' ) ) {
+                wp_enqueue_script( 'ht-cf7-redirection-script', CF7_EXTENTIONS_PL_URL.'admin/assets/js/redirection.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
+            }
+           
+            if ( 'on' == htcf7ext_get_option('htcf7ext_opt_extensions', 'mailchimp_extension', 'on') ) {
+                wp_enqueue_script( 'ht-cf7-mailchimp-map-script', CF7_EXTENTIONS_PL_URL.'admin/assets/js/mailchimp-map.js', array('jquery'), CF7_EXTENTIONS_PL_VERSION, true);
+
+                $extcf7_mailchimp_map_data = [
+                    'nonce' => wp_create_nonce('extcf7_mailchimp_map_active_nonce')
+                ];
+                wp_localize_script( 'ht-cf7-mailchimp-map-script', 'extcf7_mailchimp_map_data', $extcf7_mailchimp_map_data);
+            }
+
         }
 
         if("toplevel_page_contat-form-list" === $hook){

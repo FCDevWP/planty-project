@@ -37,7 +37,7 @@
 		</div>
 		<span id="extcf7-add-button" title="<?php echo esc_attr('add new condition rule'); ?>"><?php echo esc_html__( 'Add New Condition', 'cf7-extensions'); ?></span>
 		<div class="extcf7-user-notice">
-			<p>If You use a single input checkbox field for condition, then You have to fill the conditional value filed with "checked".</p>
+			<p><?php esc_html_e('If You use a single input checkbox field for condition, then You have to fill the conditional value filed with "checked".','cf7-extensions');?></p>
 		</div>
 	</div>
 	<div id="extcf7-text-entries">

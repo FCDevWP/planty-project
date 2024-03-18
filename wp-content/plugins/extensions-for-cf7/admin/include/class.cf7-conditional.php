@@ -59,7 +59,7 @@ class Extensions_Cf7_Conditional {
             return;
         //echo "contact form 7 tag generator";
         wpcf7_add_tag_generator('fields_group',
-            __('Conditional Fields', 'cf7-extensions'),
+            esc_html__('Conditional Fields', 'cf7-extensions'),
             'wpcf7-tg-fields-group',
             array($this, 'extcf7_tg_layout')
         );
@@ -70,14 +70,14 @@ class Extensions_Cf7_Conditional {
     	$args = wp_parse_args( $args, array() );
         $type = 'fields_group';
 
-        $description = __( "Generate a fields_group tag to unite form elements that can be shown conditionally.", 'cf7-extensions' );
+        $description = esc_html__( "Generate a fields_group tag to unite form elements that can be shown conditionally.", 'cf7-extensions' );
         include CF7_EXTENTIONS_PL_PATH.'admin/template/fields-group-layout.php';
     }
 
     public function extcf7_add_conditional_panel($panels){
     	if ( current_user_can( 'wpcf7_edit_contact_form' ) ) {
 			$panels['extcf7-conditional-panel'] = array(
-				'title'    => __( 'Conditional fields Settings', 'cf7-extensions' ),
+				'title'    => esc_html__( 'Conditional fields Settings', 'cf7-extensions' ),
 				'callback' => array( $this, 'extcf7_editor_panel_conditional'),
 			);
 		}
@@ -92,7 +92,7 @@ class Extensions_Cf7_Conditional {
 		<?php
 		foreach ($all_groups as $tag) {
 			?>
-			<option value="<?php echo $tag->name; ?>"><?php echo $tag->name; ?></option>
+			<option value="<?php echo esc_attr($tag->name); ?>"><?php echo esc_html($tag->name); ?></option>
 			<?php
 		}
 		return ob_get_clean();
@@ -108,7 +108,7 @@ class Extensions_Cf7_Conditional {
 		foreach ($all_fields as $tag) {
 			if ($tag['type'] == 'fields_group' || $tag['name'] == '') continue;
 			?>
-			<option value="<?php echo $tag['name']; ?>"><?php echo $tag['name']; ?></option>
+			<option value="<?php echo esc_attr($tag['name']); ?>"><?php echo esc_html($tag['name']); ?></option>
 			<?php
 		}
 		return ob_get_clean();

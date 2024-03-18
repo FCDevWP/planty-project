@@ -15,8 +15,8 @@ while ( $the_query->have_posts() ){
     $cf7_post_id = get_the_id();
     $title = get_the_title();
     $table_name = $wpdb->prefix . 'extcf7_db';
-    $total_email = $wpdb->get_var("SELECT COUNT(*) FROM $table_name WHERE form_id = $cf7_post_id");
-    $link  = "<a href=admin.php?page=contat-form-list&cf7_id=$cf7_post_id>%s</a>";
+    $total_email = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $table_name WHERE form_id = '%d' ",$cf7_post_id));
+    $link  = "<a href=admin.php?page=contat-form-list&cf7_id=".esc_attr($cf7_post_id).">%s</a>";
     $cf7_value['id']  = $cf7_post_id;
     $cf7_value['name']  = $title;
     $cf7_value['count'] = $total_email;
@@ -29,18 +29,18 @@ ob_start();
     <table>
         <thead>
             <tr>
-            <th>ID</th>
-            <th>Form Name</th>
-            <th>Submissions</th>
+            <th><?php esc_html_e('ID','cf7-extensions'); ?></th>
+            <th><?php esc_html_e('Form Name','cf7-extensions'); ?></th>
+            <th><?php esc_html_e('Submissions','cf7-extensions'); ?></th>
             </tr>
         </thead>
         <tbody>
 
             <?php foreach ($cf7_data as $value): ?>
                 <tr>
-                    <td><?php echo ($value['id']); ?></td>
-                    <td><?php echo ($value['name']); ?></td>
-                    <td><a href="<?php echo esc_url(admin_url('admin.php?page=contat-form-list&cf7_id='. $value['id'] .'#/entries')) ?>">View <span>(<?php echo ($value['count']); ?>)</span></a></td>
+                    <td><?php echo esc_html($value['id']); ?></td>
+                    <td><?php echo esc_html($value['name']); ?></td>
+                    <td><a href="<?php echo esc_url(admin_url('admin.php?page=contat-form-list&cf7_id='. $value['id'] .'#/entries')) ?>">View <span>(<?php echo esc_html($value['count']); ?>)</span></a></td>
                 </tr>
             <?php endforeach ?>
 
