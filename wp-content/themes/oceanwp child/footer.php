@@ -14,7 +14,7 @@
 	<div id="footer-bottom" class="clr no-footer-nav">
 		<div id="footer-bottom-inner" class="container clr">
 			<div id="copyright" class="clr" role="contentinfo">
-				<a href="http://localhost:8888/planty">Mentions légales</a>			
+				<a href="http://localhost:8888/planty">Mention légale</a>			
 			</div><!-- #copyright -->
 		</div><!-- #footer-bottom-inner -->
 	</div><!-- #footer-bottom -->
