@@ -74,7 +74,7 @@ ul, li {
 
 .ast-builder-menu-mobile .main-navigation .main-header-menu .menu-item > .menu-link:hover {
     color: black;
-    background: blue;
+    background: white;
 }
 
 /* Ceci supprime les flèches de défilement sur les champs de formulaire */
